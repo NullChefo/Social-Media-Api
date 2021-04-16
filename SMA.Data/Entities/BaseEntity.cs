@@ -3,10 +3,10 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public abstract class Entity
+    public abstract class BaseEntity
     {
         #region Constructors
-        public Entity()
+        public BaseEntity()
         {
             CreatedOn = DateTime.Now;
         }

@@ -6,7 +6,10 @@
     public class SMAContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Notification> notifications { get; set; }
+        public DbSet<Like> Likes { get; set; }
 
         public SMAContext() : base() { }
 
@@ -18,7 +21,7 @@
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("User");
-            modelBuilder.Entity<Role>().ToTable("Role");
+            
         }
     }
 }

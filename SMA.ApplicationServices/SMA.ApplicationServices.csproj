@@ -5,9 +5,4 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="Helpers\" />
-  </ItemGroup>
-
 </Project>
