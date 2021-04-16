@@ -1,13 +1,9 @@
-{
+﻿{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
-    "iis": {
-      "applicationUrl": "http://localhost/SMA.React",
-      "sslPort": 0
-    },
     "iisExpress": {
-      "applicationUrl": "http://localhost:51666",
+      "applicationUrl": "http://localhost:50480",
       "sslPort": 0
     }
   },
@@ -17,16 +13,16 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "nativeDebugging": false
+      }
     },
-    "SMA.React": {
+    "SMA.Utils": {
       "commandName": "Project",
+      "dotnetRunMessages": "true",
       "launchBrowser": true,
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:5000"
+      }
     }
   }
 }
