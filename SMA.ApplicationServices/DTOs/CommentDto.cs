@@ -8,7 +8,7 @@ namespace SMA.ApplicationServices.DTOs
     public class CommentDto
     {
         public int CommentId { get; set; }
-        public int? CreatedBy { get; set; }
+        public int CreatedByUserId { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
 

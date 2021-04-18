@@ -17,11 +17,11 @@
         [Key]
         public int Id { get; set; }
 
-        public int? CreatedBy { get; set; }
+        public int CreatedByUserId { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 
-        public int? UpdatedBy { get; set; }
+        public int UpdatedByUserId { get; set; }
 
         public DateTime? UpdatedOn { get; set; }
 

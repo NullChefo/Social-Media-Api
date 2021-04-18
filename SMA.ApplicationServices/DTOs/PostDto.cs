@@ -10,7 +10,7 @@ namespace SMA.ApplicationServices.DTOs
 
 
         public int PostId { get; set; }
-        public int? CreatedBy { get; set; }
+        public int CreatedByUserId { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
 

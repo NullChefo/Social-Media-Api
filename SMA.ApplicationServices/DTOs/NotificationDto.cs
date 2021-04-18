@@ -10,10 +10,10 @@ namespace SMA.ApplicationServices.DTOs
         public int NotificationId { get; set; }
         public DateTime? CreatedAt { get; set; }
         public bool IsRead { get; set; }
-        public string Recipient { get; set; }
+        public int RecipientUserId { get; set; }
 
         public int PostId { get; set; }
-        public string Sender { get; set; }
+        public int SenderUserId { get; set; }
         public string Type { get; set; }
 
 

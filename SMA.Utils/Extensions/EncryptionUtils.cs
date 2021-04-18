@@ -1,4 +1,5 @@
-﻿namespace SMA.Utils.Extensions
+﻿
+namespace SMA.Utils.Extensions
 {
     using System;
     using System.Security.Cryptography;

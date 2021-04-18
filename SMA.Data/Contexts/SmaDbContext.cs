@@ -17,10 +17,8 @@ namespace SMA.Data.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Set Env variable to connect to SQL server
-            //Exm:Server=IP;Database=NameOfTheDataBase;User Id=exampleUserName;Password=examplePassword;
-            var SqlCredidentials = System.Environment.GetEnvironmentVariable("SqlCredidentials");
-            optionsBuilder.UseSqlServer(SqlCredidentials); 
+         
+            optionsBuilder.UseSqlServer("Server=localhost;Database=SocialMediaApplication;User Id=applogin;Password=1234;"); 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

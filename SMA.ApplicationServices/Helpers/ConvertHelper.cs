@@ -16,7 +16,17 @@ namespace SMA.ApplicationServices.Helpers
             return new Comment
             {
                 Id = commentDto.CommentId,
-                UserHandle = commentDto.UserHandle
+                CreatedByUserId = commentDto.CreatedByUserId,
+                CreatedOn = commentDto.CreatedOn,
+                UpdatedOn = commentDto.UpdatedOn,
+
+
+                CommentBody = commentDto.CommentBody,
+                PostId = commentDto.PostId,
+                UserHandle = commentDto.UserHandle,
+                ImageId = commentDto.ImageId,
+                CommentCount = commentDto.CommentCount,
+                LikeCount = commentDto.LikeCount
             };
         }
 
@@ -25,7 +35,7 @@ namespace SMA.ApplicationServices.Helpers
             return new CommentDto
             {
                 CommentId = comment.Id,
-                CreatedBy = comment.CreatedBy,
+                CreatedByUserId = comment.CreatedByUserId,
                 CreatedOn = comment.CreatedOn,
                 UpdatedOn = comment.UpdatedOn,
 
@@ -56,6 +66,10 @@ namespace SMA.ApplicationServices.Helpers
             return new Image
             {
                 Id = imageDto.ImageId,
+                CreatedByUserId = imageDto.CreatedByUserId,
+                CreatedOn = imageDto.CreatedOn,
+                UpdatedOn = imageDto.UpdatedOn,
+                ImageUrl = imageDto.ImageUrl,
 
             };
         }
@@ -65,7 +79,7 @@ namespace SMA.ApplicationServices.Helpers
             return new ImageDto
             {
                 ImageId = image.Id,
-                CreatedBy = image.CreatedBy,
+                CreatedByUserId = image.CreatedByUserId,
                 CreatedOn = image.CreatedOn,
                 UpdatedOn = image.UpdatedOn,
                 ImageUrl = image.ImageUrl,
@@ -117,8 +131,12 @@ namespace SMA.ApplicationServices.Helpers
         {
             return new Notification
             {
-                Id = notificationDto.NotificationId
-
+                Id = notificationDto.NotificationId,
+                IsRead = notificationDto.IsRead,
+                RecipientUserId = notificationDto.RecipientUserId,
+                PostId = notificationDto.PostId,
+                SenderUserId = notificationDto.SenderUserId,
+                Type = notificationDto.Type
 
             };
         }
@@ -129,9 +147,9 @@ namespace SMA.ApplicationServices.Helpers
             {
                 NotificationId = notification.Id,
                 IsRead = notification.IsRead,
-                Recipient = notification.Recipient,
+                RecipientUserId = notification.RecipientUserId,
                 PostId = notification.PostId,
-                Sender = notification.Sender,
+                SenderUserId = notification.SenderUserId,
                 Type = notification.Type
             };
         }
@@ -152,7 +170,14 @@ namespace SMA.ApplicationServices.Helpers
             return new Post
             {
                 Id = postDto.PostId,
-                UserHandle = postDto.UserHandle
+                UserHandle = postDto.UserHandle,
+                CreatedByUserId = postDto.CreatedByUserId,
+                CreatedOn = postDto.CreatedOn,
+                UpdatedOn = postDto.UpdatedOn,
+                PostBody = postDto.PostBody,
+                CommentCount = postDto.CommentCount,
+                LikeCount = postDto.LikeCount
+                
             };
         }
 
@@ -161,7 +186,7 @@ namespace SMA.ApplicationServices.Helpers
             return new PostDto
             {
                 PostId = post.Id,
-                CreatedBy = post.CreatedBy,
+                CreatedByUserId = post.CreatedByUserId,
                 CreatedOn = post.CreatedOn,
                 UpdatedOn = post.UpdatedOn,
 
@@ -188,7 +213,21 @@ namespace SMA.ApplicationServices.Helpers
             return new User
             {
                 Id = userDto.UserId,
-                UserHandle = userDto.Handle
+                CreatedByUserId = userDto.CreatedByUserId,
+                CreatedOn = userDto.CreatedOn,
+                UpdatedByUserId = userDto.UpdatedByUserId,
+                UpdatedOn = userDto.UpdatedOn,
+
+                UserHandle = userDto.Handle,
+                FirstName = userDto.FirstName,
+                MidleName = userDto.MidleName,
+                LastName = userDto.LastName,
+                ImageId = userDto.ImageId,
+                Location = userDto.Location,
+                Website = userDto.Website,
+                Bio = userDto.Bio,
+                IsActive = userDto.IsActive
+
             };
         }
 
@@ -197,9 +236,9 @@ namespace SMA.ApplicationServices.Helpers
             return new UserDto
             {
                 UserId = user.Id,
-                CreatedBy = user.CreatedBy,
+                CreatedByUserId = user.CreatedByUserId,
                 CreatedOn = user.CreatedOn,
-                UpdatedBy = user.UpdatedBy,
+                UpdatedByUserId = user.UpdatedByUserId,
                 UpdatedOn = user.UpdatedOn,
 
                 Handle = user.UserHandle,

@@ -15,9 +15,9 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Users.AsNoTracking().AsEnumerable().ToUserDtos();
         }
 
-        public UserDto GetById(int id)
+        public UserDto GetById(int? userId)
         {
-            return _context.Users.Find(id).ToUserDto();
+            return _context.Users.Find(userId).ToUserDto();
         }
 
         public UserDto GetByUserHandle(string UserHandle)
