@@ -9,7 +9,7 @@ namespace SMA.Data.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Notification> Notifications {get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Image> Images { get; set; }
 
@@ -17,7 +17,10 @@ namespace SMA.Data.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=Nlear;User Id=applogin;Password=1234;");
+            //Set Env variable to connect to SQL server
+            //Exm:Server=IP;Database=NameOfTheDataBase;User Id=exampleUserName;Password=examplePassword;
+            var SqlCredidentials = System.Environment.GetEnvironmentVariable("SqlCredidentials");
+            optionsBuilder.UseSqlServer(SqlCredidentials); 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
