@@ -11,6 +11,7 @@ namespace SMA.Data.Contexts
         public DbSet<Post> Posts { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Like> Likes { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public SmaDbContext() : base() { }
 

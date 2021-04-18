@@ -22,7 +22,7 @@ namespace SMA.Data.Entities
         public string LastName { get; set; }
 
         [ForeignKey("ImageId")]
-        public string ImageId { get; set; }
+        public int ImageId { get; set; }
         [StringLength(50)]
         public string Location { get; set; }
         [StringLength(60)]
@@ -30,10 +30,8 @@ namespace SMA.Data.Entities
         [StringLength(300)]
         public string Bio { get; set; }
 
-        
+
         public bool IsActive { get; set; }
-
-
 
     }
 }

@@ -19,7 +19,7 @@ namespace SMA.ApplicationServices.DTOs
         public string FirstName { get; set; }
         public string MidleName { get; set; }
         public string LastName { get; set; }
-        public string ImageId { get; set; }
+        public int ImageId { get; set; }
         public string Location { get; set; }
         public string Website { get; set; }
         public string Bio { get; set; }
