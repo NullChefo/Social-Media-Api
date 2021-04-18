@@ -14,12 +14,14 @@ namespace SMA.Data.Entities
         [ForeignKey("UserHandle")]
         public string UserHandle { get; set; }
         [ForeignKey("PostId")]
-         public string PostId { get; set; }
+         public int PostId { get; set; }
         [ForeignKey("ImageId")]
-        public string ImageId { get; set; }
+        public int ImageId { get; set; }
+        public int LikeCount { get; set; }
+        public int CommentCount { get; set; }
 
 
-      
+
     }
 
 }

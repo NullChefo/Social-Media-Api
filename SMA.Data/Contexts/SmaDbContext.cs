@@ -1,17 +1,18 @@
-﻿namespace SMA.Data.Context
-{
-    using Microsoft.EntityFrameworkCore;
-    using Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SMA.Data.Entities;
 
-    public class SMAContext : DbContext
+namespace SMA.Data.Contexts
+{
+   
+    public class SmaDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Notification> notifications { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         public DbSet<Like> Likes { get; set; }
 
-        public SMAContext() : base() { }
+        public SmaDbContext() : base() { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

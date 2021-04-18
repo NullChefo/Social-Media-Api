@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Like 
+    public class Like : BaseEntity
     {
         [ForeignKey("PostId")]
         public int PostId { get; set; }

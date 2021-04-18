@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SMA.Data.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
         [Required]
         [StringLength(60)]
