@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Platforms>AnyCPU;x64;x86;arm64</Platforms>
+    <UserSecretsId>7c71eaac-ccfd-44c4-af45-72cbfb2f0f42</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SMA.Data\SMA.Data.csproj" />
-    <ProjectReference Include="..\SMA.Utils\SMA.Utils.csproj" />
   </ItemGroup>
 
 </Project>

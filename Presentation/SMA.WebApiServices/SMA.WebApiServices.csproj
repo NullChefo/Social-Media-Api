@@ -10,11 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SMA.ApplicationServices\SMA.ApplicationServices.csproj" />
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\uploads\" />
+    <ProjectReference Include="..\..\Core\SMA.ApplicationServices\SMA.ApplicationServices.csproj" />
   </ItemGroup>
 
 </Project>
