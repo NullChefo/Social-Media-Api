@@ -53,5 +53,23 @@ namespace SMA.ApplicationServices.ManagementServices
                 return -1;
             }
         }
+
+        public int Edit(ImageDto dto)
+        {
+            try
+            {
+                _context.Images.Add(dto.ToImageEntity());
+                _context.SaveChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+
+
+
+
     }
 }

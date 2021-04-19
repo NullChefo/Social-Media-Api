@@ -16,11 +16,11 @@ namespace SMA.ApplicationServices.DTOs
 
 
         public string PostBody { get; set; }
-        public int  CommentCount { get; set; }
-       
+        public int CommentCount { get; set; }
         public int LikeCount { get; set; }
-        
-        public string UserHandle { get; set; }
+
+       
+
 
 
 

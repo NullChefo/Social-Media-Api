@@ -9,6 +9,6 @@ namespace SMA.ApplicationServices.DTOs
     {
         public int LikeId { get; set; }
         public int PostID { get; set; }
-        public string UserHandle { get; set; }
+        public int UserId { get; set; }
     }
 }

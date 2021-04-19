@@ -14,9 +14,9 @@ namespace SMA.ApplicationServices.DTOs
 
 
         public string CommentBody { get; set; }
-        public string UserHandle { get; set; }
-        public int PostId { get; set; }
-        public int ImageId { get; set; }
+
+        public int? PostId { get; set; }
+        public int? ImageId { get; set; }
         public int LikeCount { get; set; }
         public int CommentCount { get; set; }
 

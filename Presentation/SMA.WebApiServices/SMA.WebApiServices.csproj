@@ -13,4 +13,8 @@
     <ProjectReference Include="..\..\SMA.ApplicationServices\SMA.ApplicationServices.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
 </Project>

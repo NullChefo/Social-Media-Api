@@ -53,7 +53,22 @@ namespace SMA.ApplicationServices.ManagementServices
                     return -1;
                 }
             }
+
+        public int Edit(LikeDto dto)
+        {
+            try
+            {
+                _context.Likes.Add(dto.ToLikeEntity());
+                _context.SaveChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
         }
+
+    }
 
     }
 

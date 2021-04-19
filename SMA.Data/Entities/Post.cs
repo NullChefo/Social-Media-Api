@@ -15,8 +15,8 @@ namespace SMA.Data.Entities
         public int CommentCount { get; set; }
         public int LikeCount { get; set; }
 
-        [ForeignKey("UserHandle")]
-        public string UserHandle { get; set; }
+        [ForeignKey("CreatedByUserId")]
+        public int CreatedByUserId { get; set; }
       
 
 

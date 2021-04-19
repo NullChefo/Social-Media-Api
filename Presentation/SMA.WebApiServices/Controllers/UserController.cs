@@ -16,7 +16,7 @@ namespace SMA.WebApiServices.Controllers
     {
         private readonly UserManagementService _service = new UserManagementService();
 
-        [HttpGet]
+        [HttpGet, Route("/api/user/get/{id}")]
         public ActionResult Get(int id)
         {
 
@@ -29,14 +29,15 @@ namespace SMA.WebApiServices.Controllers
                 return Ok(_service.GetById(id));
             }
         }
-        [HttpPost, Route("api/user/create")]
+        [HttpPost, Route("/api/user/create")]
         public ActionResult CreateUser(UserDto userDto)
         {
+
             return Ok(_service.Save(userDto));
 
         }
 
-        [HttpDelete, Route("api/user/{id}")]
+        [HttpDelete, Route("/api/user/delete/{id}")]
         public ActionResult Delete(int id)
         {
             if (_service.Delete(id) == null)
@@ -52,7 +53,11 @@ namespace SMA.WebApiServices.Controllers
         }
 
 
-
+        [HttpPost, Route("/api/user/edit")]
+        public ActionResult EditUser(UserDto dto)
+        {
+            return Ok(_service.Edit(dto));
+        }
     }
 
 }

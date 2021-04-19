@@ -10,7 +10,7 @@ using SMA.Data.Contexts;
 namespace SMA.Data.Migrations
 {
     [DbContext(typeof(SmaDbContext))]
-    [Migration("20210418223443_InitialCreate")]
+    [Migration("20210419190233_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,13 +41,13 @@ namespace SMA.Data.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ImageId")
+                    b.Property<int?>("ImageId")
                         .HasColumnType("int");
 
                     b.Property<int>("LikeCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("PostId")
+                    b.Property<int?>("PostId")
                         .HasColumnType("int");
 
                     b.Property<int>("UpdatedByUserId")
@@ -55,9 +55,6 @@ namespace SMA.Data.Migrations
 
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("UserHandle")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -112,9 +109,6 @@ namespace SMA.Data.Migrations
 
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("UserHandle")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -189,9 +183,6 @@ namespace SMA.Data.Migrations
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserHandle")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Posts");
@@ -219,7 +210,7 @@ namespace SMA.Data.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int>("ImageId")
+                    b.Property<int?>("ImageId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
@@ -243,7 +234,12 @@ namespace SMA.Data.Migrations
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserHandle")
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("UserPassword")
                         .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");

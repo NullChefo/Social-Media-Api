@@ -11,12 +11,16 @@ namespace SMA.Data.Entities
     {
         [StringLength(255)]
         public string CommentBody { get; set; }
-        [ForeignKey("UserHandle")]
-        public string UserHandle { get; set; }
+
+        [ForeignKey("CreatedByUserId")]
+        public int CreatedByUserId { get; set; }
+
         [ForeignKey("PostId")]
-         public int PostId { get; set; }
+         public int? PostId { get; set; }
+
+    
         [ForeignKey("ImageId")]
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
         public int LikeCount { get; set; }
         public int CommentCount { get; set; }
 

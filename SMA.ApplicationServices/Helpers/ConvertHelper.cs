@@ -19,11 +19,8 @@ namespace SMA.ApplicationServices.Helpers
                 CreatedByUserId = commentDto.CreatedByUserId,
                 CreatedOn = commentDto.CreatedOn,
                 UpdatedOn = commentDto.UpdatedOn,
-
-
                 CommentBody = commentDto.CommentBody,
                 PostId = commentDto.PostId,
-                UserHandle = commentDto.UserHandle,
                 ImageId = commentDto.ImageId,
                 CommentCount = commentDto.CommentCount,
                 LikeCount = commentDto.LikeCount
@@ -38,14 +35,12 @@ namespace SMA.ApplicationServices.Helpers
                 CreatedByUserId = comment.CreatedByUserId,
                 CreatedOn = comment.CreatedOn,
                 UpdatedOn = comment.UpdatedOn,
-
-
                 CommentBody = comment.CommentBody,
                 PostId = comment.PostId,
-                UserHandle = comment.UserHandle,
                 ImageId = comment.ImageId,
                 CommentCount = comment.CommentCount,
                 LikeCount = comment.LikeCount
+                
 
             };
         }
@@ -111,7 +106,7 @@ namespace SMA.ApplicationServices.Helpers
             {
                 LikeId = like.Id,
                 PostID = like.PostId,
-                UserHandle = like.UserHandle
+                UserId = like.CreatedByUserId
 
             };
         }
@@ -170,7 +165,6 @@ namespace SMA.ApplicationServices.Helpers
             return new Post
             {
                 Id = postDto.PostId,
-                UserHandle = postDto.UserHandle,
                 CreatedByUserId = postDto.CreatedByUserId,
                 CreatedOn = postDto.CreatedOn,
                 UpdatedOn = postDto.UpdatedOn,
@@ -193,8 +187,7 @@ namespace SMA.ApplicationServices.Helpers
 
                 PostBody = post.PostBody,
                 CommentCount = post.CommentCount,
-                LikeCount = post.LikeCount,
-                UserHandle = post.UserHandle
+                LikeCount = post.LikeCount
             };
         }
 
@@ -213,12 +206,12 @@ namespace SMA.ApplicationServices.Helpers
             return new User
             {
                 Id = userDto.UserId,
-                CreatedByUserId = userDto.CreatedByUserId,
+                
                 CreatedOn = userDto.CreatedOn,
-                UpdatedByUserId = userDto.UpdatedByUserId,
                 UpdatedOn = userDto.UpdatedOn,
+                UserEmail = userDto.UserEmail,
+                UserPassword = userDto.UserPassword,
 
-                UserHandle = userDto.Handle,
                 FirstName = userDto.FirstName,
                 MidleName = userDto.MidleName,
                 LastName = userDto.LastName,
@@ -236,12 +229,11 @@ namespace SMA.ApplicationServices.Helpers
             return new UserDto
             {
                 UserId = user.Id,
-                CreatedByUserId = user.CreatedByUserId,
                 CreatedOn = user.CreatedOn,
-                UpdatedByUserId = user.UpdatedByUserId,
                 UpdatedOn = user.UpdatedOn,
+                UserEmail = user.UserEmail,
+                UserPassword = user.UserPassword,
 
-                Handle = user.UserHandle,
                 FirstName = user.FirstName,
                 MidleName = user.MidleName,
                 LastName = user.LastName,

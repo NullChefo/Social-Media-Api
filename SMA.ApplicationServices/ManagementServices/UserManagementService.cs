@@ -20,10 +20,7 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Users.Find(userId).ToUserDto();
         }
 
-        public UserDto GetByUserHandle(string UserHandle)
-        {
-            return _context.Users.AsNoTracking().SingleOrDefault(x => x.UserHandle == UserHandle).ToUserDto();
-        }
+     
 
         public int Save(UserDto userDto)
         {
@@ -56,5 +53,26 @@ namespace SMA.ApplicationServices.ManagementServices
                 return -1;
             }
         }
+
+
+        public int Edit(UserDto dto)
+        {
+        
+
+            try
+            {
+                _context.Users.Add(dto.ToUserEntity());
+                _context.SaveChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+
+
+
+
     }
 }

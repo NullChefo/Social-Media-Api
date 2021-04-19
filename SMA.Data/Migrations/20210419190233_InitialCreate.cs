@@ -14,12 +14,11 @@ namespace SMA.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CommentBody = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    UserHandle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PostId = table.Column<int>(type: "int", nullable: false),
-                    ImageId = table.Column<int>(type: "int", nullable: false),
+                    CreatedByUserId = table.Column<int>(type: "int", nullable: false),
+                    PostId = table.Column<int>(type: "int", nullable: true),
+                    ImageId = table.Column<int>(type: "int", nullable: true),
                     LikeCount = table.Column<int>(type: "int", nullable: false),
                     CommentCount = table.Column<int>(type: "int", nullable: false),
-                    CreatedByUserId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedByUserId = table.Column<int>(type: "int", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -53,7 +52,6 @@ namespace SMA.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PostId = table.Column<int>(type: "int", nullable: false),
-                    UserHandle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedByUserId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedByUserId = table.Column<int>(type: "int", nullable: false),
@@ -94,7 +92,6 @@ namespace SMA.Data.Migrations
                     PostBody = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
                     CommentCount = table.Column<int>(type: "int", nullable: false),
                     LikeCount = table.Column<int>(type: "int", nullable: false),
-                    UserHandle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedByUserId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedByUserId = table.Column<int>(type: "int", nullable: false),
@@ -111,11 +108,12 @@ namespace SMA.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserHandle = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    UserEmail = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    UserPassword = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     MidleName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
-                    ImageId = table.Column<int>(type: "int", nullable: false),
+                    ImageId = table.Column<int>(type: "int", nullable: true),
                     Location = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Website = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
                     Bio = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),

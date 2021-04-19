@@ -11,8 +11,8 @@ namespace SMA.Data.Entities
     {
         [ForeignKey("PostId")]
         public int PostId { get; set; }
-        [ForeignKey("UserHandle")]
-        public string UserHandle { get; set; }
+        [ForeignKey("CreatedByUserId")]
+        public int CreatedByUserId { get; set; }
 
     }
 }
