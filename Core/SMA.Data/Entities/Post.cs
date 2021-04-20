@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Post : BaseEntity
+    public class Post :BaseEntity
     {
+
+
         [StringLength(300)]
         public string PostBody { get; set; }
 

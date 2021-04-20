@@ -9,6 +9,9 @@ namespace SMA.Data.Entities
 {
     public class Comment : BaseEntity
     {
+
+
+
         [StringLength(255)]
         public string CommentBody { get; set; }
 

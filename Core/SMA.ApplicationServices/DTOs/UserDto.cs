@@ -23,7 +23,7 @@ namespace SMA.ApplicationServices.DTOs
         public string Location { get; set; }
         public string Website { get; set; }
         public string Bio { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; }// Use for messanger like app
 
 
     }

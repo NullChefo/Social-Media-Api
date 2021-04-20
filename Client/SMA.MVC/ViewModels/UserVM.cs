@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SMA.Data.Entities
+namespace SMA.MVC.ViewModels
 {
-    public class User : BaseEntity
+    public class UserVM
     {
 
+        public int UserId { get; set; }
+
+        public DateTime? CreatedOn { get; set; }
+        public DateTime? UpdatedOn { get; set; }
 
         [Required(ErrorMessage = "Please enter email")]
         [Display(Name = "Email")]
@@ -17,43 +20,33 @@ namespace SMA.Data.Entities
         public string UserEmail { get; set; }
 
         [Required(ErrorMessage = "Please enter password")]
-        [Display(Name = "password")]
+        [Display(Name = "Password")]
         [StringLength(60)]
         public string UserPassword { get; set; }
 
-
         [Required(ErrorMessage = "Please enter first name")]
-        [Display(Name = "First Name")]
-        [StringLength(40)]
-        public string FirstName { get; set; }
-        [StringLength(40)]
-        public string MidleName { get; set; }
-        [StringLength(40)]
-        public string LastName { get; set; }
-
-        [ForeignKey("ImageId")]
-        public int? ImageId { get; set; }
-
-        [StringLength(50)]
-        public string Location { get; set; }
+        [Display(Name = "First name")]
         [StringLength(60)]
-        public string Website { get; set; }
-        [StringLength(300)]
-        public string Bio { get; set; }
+        public string FirstName { get; set; }
+        [Display(Name = "Midle name")]
+        [StringLength(60)]
+        public string MidleName { get; set; }
 
+        [Required(ErrorMessage = "Please enter last name")]
+        [Display(Name = "Last name")]
+        [StringLength(60)]
+        public string LastName { get; set; }
+        public int? ImageId { get; set; }
+       
+        [Display(Name = "Location")]
+        public string Location { get; set; }
+        [Display(Name = "Website")]
+        public string Website { get; set; }
+        [Display(Name = "Bio")]
+        public string Bio { get; set; }
 
         public bool IsActive { get; set; }// Use for messanger like app
 
 
-        #region Constructors
-        public User()
-        {
-            IsActive = true;
-        }
-        #endregion
-
     }
-
-
-
 }

@@ -48,14 +48,9 @@ namespace SMA.WebApiServices.Controllers
         [HttpDelete, Route("/api/user/delete/{id}")]
         public ActionResult Delete(int id)
         {
-            if (_service.Delete(id) == null)
-            {
-                return NotFound();
-            }
-            else
-            {
+            
                 return Ok(_service.Delete(id));
-            }
+            
 
 
         }

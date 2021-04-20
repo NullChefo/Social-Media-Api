@@ -18,9 +18,9 @@ namespace SMA.WebApiServices.Controllers
     {
         private readonly ImageManagementService _service = new ImageManagementService();
 
-        private readonly IHostingEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
 
-        public ImageController(IHostingEnvironment environment)
+        public ImageController(IWebHostEnvironment environment)
         {
             _environment = environment ?? throw new ArgumentNullException(nameof(environment));
         }
@@ -55,9 +55,6 @@ namespace SMA.WebApiServices.Controllers
         public async Task<IActionResult> UploadImage(List<IFormFile> files, int UserId)
         {
             ImageDto image = new ImageDto();
-            string ImageUrl;
-            int CreatedByUserId;
-            DateTime CreatedOn;
 
             try
             {
