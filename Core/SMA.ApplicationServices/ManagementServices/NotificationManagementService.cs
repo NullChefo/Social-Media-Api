@@ -54,19 +54,7 @@ namespace SMA.ApplicationServices.ManagementServices
             }
         }
 
-        public int Edit(NotificationDto dto)
-        {
-            try
-            {
-                _context.Notifications.Add(dto.ToNotificationEntity());
-                _context.SaveChanges();
-                return 1;
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
-        }
+     
 
 
     }

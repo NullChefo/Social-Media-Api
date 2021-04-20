@@ -16,6 +16,15 @@ namespace SMA.WebApiServices.Controllers
         private readonly NotificationManagementService _service = new NotificationManagementService();
 
 
+
+        [HttpGet, Route("api/notification")]
+        public ActionResult Get()
+        {
+            return Ok(_service.GetAll());
+        }
+
+
+
         [HttpGet, Route("/api/notification/get/{id}")]
         public ActionResult Get(int id)
         {
@@ -46,12 +55,7 @@ namespace SMA.WebApiServices.Controllers
 
 
 
-        [HttpPatch, Route("/api/Notification/edit/{id}")]
-        public ActionResult EditNotification(NotificationDto dto)
-        {
-            return Ok(_service.Edit(dto));
-        }
-
+        
 
     }
 

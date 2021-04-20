@@ -54,20 +54,7 @@ namespace SMA.ApplicationServices.ManagementServices
             }
         }
 
-        public int Edit(CommentDto dto)
-        {
-            try
-            {
-                _context.Comments.Add(dto.ToCommentEntity());
-                _context.SaveChanges();
-                return 1;
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
-        }
-
+       
 
 
     }

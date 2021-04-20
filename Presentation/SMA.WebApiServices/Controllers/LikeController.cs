@@ -17,6 +17,14 @@ namespace SMA.WebApiServices.Controllers
 
 
 
+        [HttpGet, Route("api/like")]
+        public ActionResult Get()
+        {
+            return Ok(_service.GetAll());
+        }
+
+
+
         [HttpGet, Route("/api/like/get/{id}")]
         public ActionResult GetByPostId(int id)
         {
@@ -48,11 +56,7 @@ namespace SMA.WebApiServices.Controllers
         }
 
 
-        [HttpPatch, Route("/api/like/edit")]
-        public ActionResult EditLike(LikeDto dto)
-        {
-            return Ok(_service.Edit(dto));
-        }
+      
 
 
     }

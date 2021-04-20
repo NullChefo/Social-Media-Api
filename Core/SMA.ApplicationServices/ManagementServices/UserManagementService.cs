@@ -55,22 +55,7 @@ namespace SMA.ApplicationServices.ManagementServices
         }
 
 
-        public int Edit(UserDto dto)
-        {
-        
-
-            try
-            {
-                _context.Users.Add(dto.ToUserEntity());
-                _context.SaveChanges();
-                return 1;
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
-        }
-
+  
 
 
 

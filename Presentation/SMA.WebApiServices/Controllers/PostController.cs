@@ -17,6 +17,14 @@ namespace SMA.WebApiServices.Controllers
 
 
 
+
+        [HttpGet, Route("api/post")]
+        public ActionResult Get()
+        {
+            return Ok(_service.GetAll());
+        }
+
+
         [HttpGet, Route("/api/post/get/{id}")]
         public ActionResult Get(int id)
         {
@@ -46,11 +54,7 @@ namespace SMA.WebApiServices.Controllers
 
 
         }
-        [HttpPatch, Route("/api/post/edit")]
-        public ActionResult EditPost(PostDto dto)
-        {
-            return Ok(_service.Edit(dto));
-        }
+       
 
 
     }

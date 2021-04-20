@@ -8,57 +8,25 @@ using System.Threading.Tasks;
 
 namespace SMA.ApplicationServices.ManagementServices
 {
-        public class LikeManagementService : BaseManagementService
+    public class LikeManagementService : BaseManagementService
+    {
+        public IEnumerable<LikeDto> GetAll()
         {
-            public IEnumerable<LikeDto> GetAll()
-            {
-                return _context.Likes.AsNoTracking().AsEnumerable().ToLikeDtos();
-            }
+            return _context.Likes.AsNoTracking().AsEnumerable().ToLikeDtos();
+        }
 
-            public LikeDto GetByPostId(int PostId)
-            {
-                return _context.Likes.Find(PostId).ToLikeDto();
-            }
+        public LikeDto GetByPostId(int PostId)
+        {
+            return _context.Likes.Find(PostId).ToLikeDto();
+        }
 
-          
 
-            public int Save(LikeDto likeDto)
-            {
-                try
-                {
-                    _context.Likes.Add(likeDto.ToLikeEntity());
-                    _context.SaveChanges();
-                    return 1;
-                }
-                catch (Exception)
-                {
-                    return -1;
-                }
-            }
 
-            public int Delete(int id)
-            {
-                try
-                {
-                    var like = _context.Likes.Find(id);
-                    if (like == null)
-                        return -1;
-
-                    _context.Likes.Remove(like);
-                    _context.SaveChanges();
-                    return 1;
-                }
-                catch (Exception)
-                {
-                    return -1;
-                }
-            }
-
-        public int Edit(LikeDto dto)
+        public int Save(LikeDto likeDto)
         {
             try
             {
-                _context.Likes.Add(dto.ToLikeEntity());
+                _context.Likes.Add(likeDto.ToLikeEntity());
                 _context.SaveChanges();
                 return 1;
             }
@@ -68,7 +36,27 @@ namespace SMA.ApplicationServices.ManagementServices
             }
         }
 
-    }
+        public int Delete(int id)
+        {
+            try
+            {
+                var like = _context.Likes.Find(id);
+                if (like == null)
+                    return -1;
+
+                _context.Likes.Remove(like);
+                _context.SaveChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+
+
 
     }
+
+}
 

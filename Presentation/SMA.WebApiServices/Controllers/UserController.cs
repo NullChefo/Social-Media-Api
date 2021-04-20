@@ -16,6 +16,14 @@ namespace SMA.WebApiServices.Controllers
     {
         private readonly UserManagementService _service = new UserManagementService();
 
+
+        [HttpGet, Route("api/user")]
+        public ActionResult Get()
+        {
+            return Ok(_service.GetAll());
+        }
+
+
         [HttpGet, Route("/api/user/get/{id}")]
         public ActionResult Get(int id)
         {
@@ -53,11 +61,6 @@ namespace SMA.WebApiServices.Controllers
         }
 
 
-        [HttpPost, Route("/api/user/edit")]
-        public ActionResult EditUser(UserDto dto)
-        {
-            return Ok(_service.Edit(dto));
-        }
     }
 
 }

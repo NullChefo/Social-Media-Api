@@ -26,6 +26,13 @@ namespace SMA.WebApiServices.Controllers
         }
 
 
+        [HttpGet, Route("api/image")]
+        public ActionResult Get()
+        {
+            return Ok(_service.GetAll());
+        }
+
+
 
         [HttpGet, Route("/api/image/get/{id}")]
         public ActionResult Get(int id)
@@ -101,12 +108,7 @@ namespace SMA.WebApiServices.Controllers
 
 
 
-        [HttpPatch, Route("/api/image/edit")]
-        public ActionResult EditImage(ImageDto dto)
-        {
-            return Ok(_service.Edit(dto));
-        }
-
+       
 
     }
 }

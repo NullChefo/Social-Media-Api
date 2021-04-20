@@ -54,19 +54,7 @@ namespace SMA.ApplicationServices.ManagementServices
             }
         }
 
-        public int Edit(PostDto dto)
-        {
-            try
-            {
-                _context.Posts.Add(dto.ToPostEntity());
-                _context.SaveChanges();
-                return 1;
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
-        }
+       
 
 
     }

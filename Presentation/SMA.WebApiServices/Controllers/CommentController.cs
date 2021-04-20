@@ -16,6 +16,15 @@ namespace SMA.WebApiServices.Controllers
         private readonly CommentManagementService _service = new CommentManagementService();
 
 
+        [HttpGet, Route("api/comment")]
+        public ActionResult Get()
+        {
+            return Ok(_service.GetAll());
+        }
+
+
+
+
         [HttpGet, Route("/api/comment/get/{id}")]
         public ActionResult Get(int id)
         {
@@ -44,13 +53,7 @@ namespace SMA.WebApiServices.Controllers
             
         }
 
-        [HttpPatch, Route("/api/comment/edit")]
-        public ActionResult EditComment(CommentDto dto)
-        {
-            return Ok(_service.Edit(dto));
-        }
-
-
+        
 
     }
 
