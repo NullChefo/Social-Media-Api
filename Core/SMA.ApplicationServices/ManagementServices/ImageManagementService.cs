@@ -20,7 +20,12 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Images.Find(id).ToImageDto();
         }
 
-      
+        
+
+  public ImageDto GetByCreatedByUserId(int CreatedByUserId)
+        {
+            return _context.Images.Find(CreatedByUserId).ToImageDto();
+        }
 
         public int Save(ImageDto imageDto)
         {

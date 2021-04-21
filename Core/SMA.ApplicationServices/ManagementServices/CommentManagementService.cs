@@ -19,9 +19,12 @@ namespace SMA.ApplicationServices.ManagementServices
         {
             return _context.Comments.Find(id).ToCommentDto();
         }
+      
 
-       
-
+               public CommentDto GetByCommentBody(string body)
+        {
+            return _context.Comments.Find(body).ToCommentDto();
+        }
         public int Save(CommentDto commentDto)
         {
             try

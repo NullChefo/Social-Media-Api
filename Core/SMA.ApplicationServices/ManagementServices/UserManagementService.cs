@@ -20,7 +20,12 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Users.Find(userId).ToUserDto();
         }
 
-     
+
+        public UserDto GetByFirstName(string FirstName)
+        {
+            return _context.Users.Find(FirstName).ToUserDto();
+        }
+
 
         public int Save(UserDto userDto)
         {

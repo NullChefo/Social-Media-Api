@@ -14,7 +14,7 @@ namespace SMA.MVC.ViewModels
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
 
-
+        public int? ImageId { get; set; }
         public string PostBody { get; set; }
         public int CommentCount { get; set; }
         public int LikeCount { get; set; }

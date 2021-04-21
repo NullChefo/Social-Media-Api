@@ -12,7 +12,7 @@ namespace SMA.MVC.Controllers
 {
     public class PostController : Controller
     {
-        private readonly Uri url = new Uri("https://localhost:44348/api/post");
+        private readonly Uri url = new Uri("https://localhost:44321/api/Post");
 
         // GET: Posts
         public ActionResult Index()

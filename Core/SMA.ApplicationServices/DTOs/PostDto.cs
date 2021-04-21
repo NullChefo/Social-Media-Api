@@ -16,10 +16,10 @@ namespace SMA.ApplicationServices.DTOs
 
 
         public string PostBody { get; set; }
-        public int CommentCount { get; set; }
-        public int LikeCount { get; set; }
+        public uint CommentCount { get; set; } = 0;
+        public uint LikeCount { get; set; } = 0;
 
-       
+        public int? ImageId { get; set; }
 
 
 

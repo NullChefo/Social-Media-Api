@@ -13,7 +13,7 @@ namespace SMA.Data.Entities
 
 
         [StringLength(255)]
-        public string CommentBody { get; set; }
+        public string CommentBody { get; set; } = "";
 
         [ForeignKey("CreatedByUserId")]
         public int CreatedByUserId { get; set; }
@@ -24,8 +24,9 @@ namespace SMA.Data.Entities
     
         [ForeignKey("ImageId")]
         public int? ImageId { get; set; }
-        public int LikeCount { get; set; }
-        public int CommentCount { get; set; }
+
+        public uint LikeCount { get; set; } = 0;
+        public uint CommentCount { get; set; } = 0;
 
 
 

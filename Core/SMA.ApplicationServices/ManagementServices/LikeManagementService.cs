@@ -20,8 +20,11 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Likes.Find(PostId).ToLikeDto();
         }
 
-
-
+        
+             public LikeDto GetById(int id)
+        {
+            return _context.Likes.Find(id).ToLikeDto();
+        }
         public int Save(LikeDto likeDto)
         {
             try

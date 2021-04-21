@@ -20,7 +20,15 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Notifications.Find(id).ToNotificationDto();
         }
 
-     
+        public NotificationDto GetByRecipientUserId(int RecipientUserId)
+        {
+            return _context.Notifications.Find(RecipientUserId).ToNotificationDto();
+        }
+
+        public NotificationDto GetBySenderUserId(int SenderUserId)
+        {
+            return _context.Notifications.Find(SenderUserId).ToNotificationDto();
+        }
 
         public int Save(NotificationDto notificationDto)
         {

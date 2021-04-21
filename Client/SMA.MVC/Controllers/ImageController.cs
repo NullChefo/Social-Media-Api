@@ -13,7 +13,7 @@ namespace SMA.MVC.Controllers
     public class ImageController : Controller
     {
 
-        private readonly Uri url = new Uri("https://localhost:44348/api/image");
+        private readonly Uri url = new Uri("https://localhost:44321/api/Image");
 
         // GET: Images
         public ActionResult Index()

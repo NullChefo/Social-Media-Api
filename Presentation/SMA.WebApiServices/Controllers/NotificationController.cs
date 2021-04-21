@@ -17,15 +17,44 @@ namespace SMA.WebApiServices.Controllers
 
 
 
-        [HttpGet, Route("api/notification")]
-        public ActionResult Get()
+        [HttpGet]
+        public ActionResult GetAll()
         {
             return Ok(_service.GetAll());
         }
 
 
+        [HttpGet, Route("/api/Notification/GetByRecipientUserId/{id}")]
+        public ActionResult GetByRecipientUserId(int id)
+        {
 
-        [HttpGet, Route("/api/notification/get/{id}")]
+            if (_service.GetByRecipientUserId(id) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.GetByRecipientUserId(id));
+            }
+        }
+
+
+        [HttpGet, Route("/api/Notification/GetBySenderUserId/{id}")]
+        public ActionResult GetBySenderUserId(int id)
+        {
+
+            if (_service.GetBySenderUserId(id) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.GetBySenderUserId(id));
+            }
+        }
+
+
+        [HttpGet, Route("/api/Notification/{id}")]
         public ActionResult Get(int id)
         {
 
@@ -38,14 +67,14 @@ namespace SMA.WebApiServices.Controllers
                 return Ok(_service.GetById(id));
             }
         }
-        [HttpPost, Route("/api/notification/create")]
+        [HttpPost, Route("/api/Notification")]
         public ActionResult CreateUser(NotificationDto notificationDto)
         {
             return Ok(_service.Save(notificationDto));
 
         }
 
-        [HttpDelete, Route("/api/notification/delete/{id}")]
+        [HttpDelete, Route("/api/Notification/{id}")]
         public ActionResult Delete(int id)
         { 
                 return Ok(_service.Delete(id));

@@ -9,16 +9,17 @@ namespace SMA.Data.Entities
 {
     public class Post :BaseEntity
     {
-
-
-        [StringLength(300)]
-        public string PostBody { get; set; }
-
-        public int CommentCount { get; set; }
-        public int LikeCount { get; set; }
-
         [ForeignKey("CreatedByUserId")]
         public int CreatedByUserId { get; set; }
+
+        [ForeignKey("ImageId")]
+        public int? ImageId { get; set; }
+
+        [StringLength(300)]
+        public string PostBody { get; set; } = "";
+        public uint CommentCount { get; set; } = 0;
+        public uint LikeCount { get; set; } = 0;
+
       
 
 

@@ -17,15 +17,50 @@ namespace SMA.WebApiServices.Controllers
         private readonly UserManagementService _service = new UserManagementService();
 
 
-        [HttpGet, Route("api/user")]
-        public ActionResult Get()
+        [HttpGet]
+        public ActionResult GetAll()
         {
             return Ok(_service.GetAll());
         }
 
 
-        [HttpGet, Route("/api/user/get/{id}")]
-        public ActionResult Get(int id)
+        [HttpGet, Route("/api/User/GetByFirstName/{name}")]
+        public ActionResult GetByName(string name)
+        {
+
+            if (_service.GetByFirstName(name) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.GetByFirstName(name));
+            }
+        }
+
+
+        //[HttpGet, Route("/api/User/Login/{Email}&{Password}")]
+        //public ActionResult Login(string Email , string Password)
+        //{
+
+        //    if(Email==null || Password == null)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    if (_service.Login(Email,Password) == null )
+        //    {
+        //        return NotFound();
+        //    }
+        //    else
+        //    {
+        //        return Ok(_service.Login(Email, Password));
+        //    }
+        //}
+
+
+        [HttpGet, Route("/api/User/{id}")]
+        public ActionResult GetById(int id)
         {
 
             if (_service.GetById(id) == null)
@@ -37,7 +72,7 @@ namespace SMA.WebApiServices.Controllers
                 return Ok(_service.GetById(id));
             }
         }
-        [HttpPost, Route("/api/user/create")]
+        [HttpPost, Route("/api/User/")]
         public ActionResult CreateUser(UserDto userDto)
         {
 
@@ -45,7 +80,7 @@ namespace SMA.WebApiServices.Controllers
 
         }
 
-        [HttpDelete, Route("/api/user/delete/{id}")]
+        [HttpDelete, Route("/api/User/{id}")]
         public ActionResult Delete(int id)
         {
             

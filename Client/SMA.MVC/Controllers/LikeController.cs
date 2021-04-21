@@ -13,7 +13,7 @@ namespace SMA.MVC.Controllers
     public class LikeController : Controller
     {
 
-        private readonly Uri url = new Uri("https://localhost:44348/api/like");
+        private readonly Uri url = new Uri("https://localhost:44321/api/Like");
 
         // GET: Likes
         public ActionResult Index()

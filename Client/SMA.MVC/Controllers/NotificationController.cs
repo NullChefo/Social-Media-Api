@@ -13,7 +13,7 @@ namespace SMA.MVC.Controllers
     public class NotificationController : Controller
     {
 
-        private readonly Uri url = new Uri("https://localhost:44348/api/notification");
+        private readonly Uri url = new Uri("https://localhost:44321/api/Notification");
 
         // GET: Notifications
         public ActionResult Index()

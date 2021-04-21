@@ -9,15 +9,13 @@ namespace SMA.Data.Entities
     public class Notification : BaseEntity
     {
 
-        public bool IsRead { get; set; }
-
-        public int RecipientUserId { get; set; }
-
         [ForeignKey("PostId")]
         public int PostId { get; set; }
-        
+
+        public bool IsRead { get; set; } = false;
+        public int RecipientUserId { get; set; }
         public int SenderUserId { get; set; }
-        public string Type { get; set; }
+        public string Type { get; set; } = "";
 
 
     }

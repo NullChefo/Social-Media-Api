@@ -17,15 +17,33 @@ namespace SMA.WebApiServices.Controllers
 
 
 
-        [HttpGet, Route("api/like")]
-        public ActionResult Get()
+        [HttpGet]
+        public ActionResult GetAll()
         {
             return Ok(_service.GetAll());
         }
 
 
 
-        [HttpGet, Route("/api/like/get/{id}")]
+        [HttpGet, Route("/api/Like/{id}")]
+        public ActionResult GetById(int id)
+        {
+
+            if (_service.GetById(id) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.GetById(id));
+            }
+        }
+
+
+    
+
+
+        [HttpGet, Route("/api/Like/GetByPostId/{id}")]
         public ActionResult GetByPostId(int id)
         {
 
@@ -38,14 +56,15 @@ namespace SMA.WebApiServices.Controllers
                 return Ok(_service.GetByPostId(id));
             }
         }
-        [HttpPost, Route("/api/like/create")]
+
+        [HttpPost, Route("/api/Like")]
         public ActionResult CreateUser(LikeDto likeDto)
         {
             return Ok(_service.Save(likeDto));
 
         }
 
-        [HttpDelete, Route("/api/like/delate/{id}")]
+        [HttpDelete, Route("/api/Like/{id}")]
         public ActionResult Delete(int id)
         {
             

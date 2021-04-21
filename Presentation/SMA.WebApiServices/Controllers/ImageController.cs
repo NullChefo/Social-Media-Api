@@ -26,16 +26,32 @@ namespace SMA.WebApiServices.Controllers
         }
 
 
-        [HttpGet, Route("api/image")]
-        public ActionResult Get()
+        [HttpGet]
+        public ActionResult GetAll()
         {
             return Ok(_service.GetAll());
+        }
+        
+
+
+        [HttpGet, Route("/api/Image/GetByCreatedByUserId/{id}")]
+        public ActionResult GetByPostId(int id)
+        {
+
+            if (_service.GetByCreatedByUserId(id) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.GetByCreatedByUserId(id));
+            }
         }
 
 
 
-        [HttpGet, Route("/api/image/get/{id}")]
-        public ActionResult Get(int id)
+        [HttpGet, Route("/api/Image/{id}")]
+        public ActionResult GetById(int id)
         {
 
             if (_service.GetById(id) == null)
@@ -51,7 +67,7 @@ namespace SMA.WebApiServices.Controllers
 
         #region Upload image
 
-        [HttpPost, Route("/api/image/create")]
+        [HttpPost, Route("/api/Image")]
         public async Task<IActionResult> UploadImage(List<IFormFile> files, int UserId)
         {
             ImageDto image = new ImageDto();
@@ -95,7 +111,7 @@ namespace SMA.WebApiServices.Controllers
 
       
 
-        [HttpDelete, Route("/api/image/delete/{id}")]
+        [HttpDelete, Route("/api/Image/{id}")]
         public ActionResult Delete(int id)
         {
        

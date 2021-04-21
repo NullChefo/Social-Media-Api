@@ -73,7 +73,6 @@ namespace SMA.Data.Migrations
                     PostId = table.Column<int>(type: "int", nullable: false),
                     SenderUserId = table.Column<int>(type: "int", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedByUserId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedByUserId = table.Column<int>(type: "int", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -117,11 +116,7 @@ namespace SMA.Data.Migrations
                     Location = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Website = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
                     Bio = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedByUserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedByUserId = table.Column<int>(type: "int", nullable: false),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

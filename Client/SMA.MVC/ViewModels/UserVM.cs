@@ -11,8 +11,7 @@ namespace SMA.MVC.ViewModels
 
         public int UserId { get; set; }
 
-        public DateTime? CreatedOn { get; set; }
-        public DateTime? UpdatedOn { get; set; }
+       
 
         [Required(ErrorMessage = "Please enter email")]
         [Display(Name = "Email")]
@@ -44,8 +43,8 @@ namespace SMA.MVC.ViewModels
         public string Website { get; set; }
         [Display(Name = "Bio")]
         public string Bio { get; set; }
-
-        public bool IsActive { get; set; }// Use for messanger like app
+        public string Token { get; set; } = ""; //stores the auth token 
+        public bool IsActive { get; set; }     // Use for messanger like app
 
 
     }

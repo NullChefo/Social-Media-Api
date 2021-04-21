@@ -170,8 +170,9 @@ namespace SMA.ApplicationServices.Helpers
                 UpdatedOn = postDto.UpdatedOn,
                 PostBody = postDto.PostBody,
                 CommentCount = postDto.CommentCount,
-                LikeCount = postDto.LikeCount
-                
+                LikeCount = postDto.LikeCount,
+                ImageId = postDto.ImageId
+
             };
         }
 
@@ -187,7 +188,8 @@ namespace SMA.ApplicationServices.Helpers
 
                 PostBody = post.PostBody,
                 CommentCount = post.CommentCount,
-                LikeCount = post.LikeCount
+                LikeCount = post.LikeCount,
+                ImageId=post.ImageId
             };
         }
 
@@ -206,9 +208,7 @@ namespace SMA.ApplicationServices.Helpers
             return new User
             {
                 Id = userDto.UserId,
-                
-                CreatedOn = userDto.CreatedOn,
-                UpdatedOn = userDto.UpdatedOn,
+
                 UserEmail = userDto.UserEmail,
                 UserPassword = userDto.UserPassword,
 
@@ -229,8 +229,7 @@ namespace SMA.ApplicationServices.Helpers
             return new UserDto
             {
                 UserId = user.Id,
-                CreatedOn = user.CreatedOn,
-                UpdatedOn = user.UpdatedOn,
+          
                 UserEmail = user.UserEmail,
                 UserPassword = user.UserPassword,
 

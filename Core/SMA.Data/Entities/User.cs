@@ -7,9 +7,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SMA.Data.Entities
 {
-    public class User : BaseEntity
-    {
+    public class User 
 
+    {
+        [Key]
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Please enter email")]
         [Display(Name = "Email")]
@@ -27,31 +29,25 @@ namespace SMA.Data.Entities
         [StringLength(40)]
         public string FirstName { get; set; }
         [StringLength(40)]
-        public string MidleName { get; set; }
+        public string MidleName { get; set; } = "";
         [StringLength(40)]
-        public string LastName { get; set; }
+        public string LastName { get; set; } 
 
         [ForeignKey("ImageId")]
         public int? ImageId { get; set; }
 
         [StringLength(50)]
-        public string Location { get; set; }
+        public string Location { get; set; } = "";
         [StringLength(60)]
-        public string Website { get; set; }
+        public string Website { get; set; } = "";//nullable
         [StringLength(300)]
-        public string Bio { get; set; }
-
+        public string Bio { get; set; } = "";
+        
 
         public bool IsActive { get; set; }// Use for messanger like app
 
 
-        #region Constructors
-        public User()
-        {
-            IsActive = true;
-        }
-        #endregion
-
+       
     }
 
 

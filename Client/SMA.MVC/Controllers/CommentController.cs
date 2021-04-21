@@ -12,7 +12,7 @@ namespace SMA.MVC.Controllers
 {
     public class CommentController : Controller
     {
-        private readonly Uri url = new Uri("https://localhost:44348/api/comments");
+        private readonly Uri url = new Uri("https://localhost:44321/api/Comments");
 
         // GET: Comments
         public ActionResult Index()

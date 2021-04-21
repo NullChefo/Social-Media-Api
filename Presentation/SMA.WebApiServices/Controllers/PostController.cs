@@ -18,15 +18,30 @@ namespace SMA.WebApiServices.Controllers
 
 
 
-        [HttpGet, Route("api/post")]
-        public ActionResult Get()
+        [HttpGet]
+        public ActionResult GetAll()
         {
             return Ok(_service.GetAll());
         }
 
 
-        [HttpGet, Route("/api/post/get/{id}")]
-        public ActionResult Get(int id)
+        [HttpGet, Route("/api/Post/GetByPostBody/{postbody}")]
+        public ActionResult Get(string postbody)
+        {
+
+            if (_service.GetByPostBody(postbody) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.GetByPostBody(postbody));
+            }
+        }
+
+
+        [HttpGet, Route("/api/Post/{id}")]
+        public ActionResult GetById(int id)
         {
 
             if (_service.GetById(id) == null)
@@ -38,14 +53,14 @@ namespace SMA.WebApiServices.Controllers
                 return Ok(_service.GetById(id));
             }
         }
-        [HttpPost, Route("/api/post/create")]
+        [HttpPost, Route("/api/Post")]
         public ActionResult CreatePost(PostDto postDto)
         {
             return Ok(_service.Save(postDto));
 
         }
 
-        [HttpDelete, Route("/api/post/delete/{id}")]
+        [HttpDelete, Route("/api/Post/{id}")]
         public ActionResult Delete(int id)
         {
            

@@ -16,17 +16,30 @@ namespace SMA.WebApiServices.Controllers
         private readonly CommentManagementService _service = new CommentManagementService();
 
 
-        [HttpGet, Route("api/comment")]
-        public ActionResult Get()
+        [HttpGet]
+        public ActionResult GetAll()
         {
             return Ok(_service.GetAll());
         }
+        
 
 
+        [HttpGet, Route("/api/Comment/GetByCommentBody/{body}")]
+        public ActionResult GetByCommentBody(string body)
+        {
 
+            if (_service.GetByCommentBody(body) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.GetByCommentBody(body));
+            }
+        }
 
-        [HttpGet, Route("/api/comment/get/{id}")]
-        public ActionResult Get(int id)
+        [HttpGet, Route("/api/Comment/{id}")]
+        public ActionResult GetById(int id)
         {
 
             if (_service.GetById(id) == null)
@@ -38,14 +51,14 @@ namespace SMA.WebApiServices.Controllers
                 return Ok(_service.GetById(id));
             }
         }
-        [HttpPost, Route("/api/comment/create")]
+        [HttpPost, Route("/api/Comment")]
         public ActionResult CreateUser(CommentDto commentDto)
         {
             return Ok(_service.Save(commentDto));
 
         }
 
-        [HttpDelete, Route("/api/comment/delete/{id}")]
+        [HttpDelete, Route("/api/Comment/{id}")]
         public ActionResult Delete(int id)
         {
             

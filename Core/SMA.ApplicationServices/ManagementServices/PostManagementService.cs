@@ -20,7 +20,10 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Posts.Find(id).ToPostDto();
         }
 
-      
+        public PostDto GetByPostBody(string PostBody)
+        {
+            return _context.Posts.Find(PostBody).ToPostDto();
+        }
 
         public int Save(PostDto postDto)
         {
