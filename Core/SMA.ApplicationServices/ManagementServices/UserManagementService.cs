@@ -23,12 +23,20 @@ namespace SMA.ApplicationServices.ManagementServices
 
         public UserDto GetByEmail(string Email)
         {
+
             return _context.Users.AsNoTracking().SingleOrDefault(x => x.UserEmail == Email).ToUserDto();
         }
 
-        public UserDto PassLoginInfo(string Email,string Password)
+        public int GetUserIdByEmail(string Email)
         {
-            return _context.Users.AsNoTracking().SingleOrDefault(x => x.UserEmail == Email && x.UserPassword == Password).ToUserDto();
+            UserDto user = _context.Users.AsNoTracking().SingleOrDefault(x => x.UserEmail == Email).ToUserDto();
+            return user.UserId;
+        }
+
+
+        public UserDto PassLoginInfo(string email,string password)
+        {
+            return _context.Users.AsNoTracking().SingleOrDefault(x => x.UserEmail == email && x.UserPassword == password).ToUserDto();
 
         }
 

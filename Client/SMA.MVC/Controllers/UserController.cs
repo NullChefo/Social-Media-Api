@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -39,24 +38,76 @@ namespace SMA.MVC.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //public IActionResult Login(UserVM vm)
+        //{
+        //    using (HttpClient httpClient = new HttpClient())
+        //    {
+        //        httpClient.BaseAddress = url;
+        //        httpClient.DefaultRequestHeaders.Accept.Clear();
+        //        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //        var stringVm = JsonConvert.SerializeObject(vm);
+        //        var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
+        //        var content = new ByteArrayContent(encodingVM);
+        //        content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
+        //        var response = httpClient.PostAsync("", content).Result;
+
+        //    }
+        //    return RedirectToAction("Index", "Post");
+        //}
+
         [HttpPost]
-        public IActionResult Login(UserVM vm)
+        public async Task<IActionResult> Login(UserVM userVM)
         {
+            string email = userVM.UserEmail;
+            string password = userVM.UserPassword;
+            string token;
+            string UserId;
+
+            //Chech if it in the database
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var stringVm = JsonConvert.SerializeObject(vm);
-                var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
-                var content = new ByteArrayContent(encodingVM);
-                content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
-                var response = httpClient.PostAsync("", content).Result;
+
+                try
+                {
+                    var response = await httpClient.GetStringAsync(url + "/" + "PassLoginInfo" + "/" + email + "&" + password);
+                    token = response;
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e);
+                    return RedirectToAction("Login", "User");
+                }
 
             }
-            return RedirectToAction("Index", "Post");
-        }
+            HttpContext.Session.SetString("Token", token); // !!! Stores the token in sesion
 
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = url;
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    var response = await httpClient.GetStringAsync(url + "/" + "GetByEmail" + "/" + email);
+                    UserId = response;
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e);
+                    return RedirectToAction("Login", "User");
+                }
+
+                HttpContext.Session.SetString("UserId", UserId);// !!! Stores the UserId in sesionn
+
+
+                return RedirectToAction("Index", "Home");
+            }
+        }
+  
 
 
         [HttpGet]
@@ -81,7 +132,7 @@ namespace SMA.MVC.Controllers
                 var response = httpClient.PostAsync("", content).Result;
             }
 
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Login", "User");
         }
 
 
@@ -117,6 +168,10 @@ namespace SMA.MVC.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+
+        
+
     }
 
 

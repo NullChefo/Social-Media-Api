@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using System;
 
 namespace SMA.MVC
 {
@@ -12,6 +12,9 @@ namespace SMA.MVC
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+
+
         }
 
         public IConfiguration Configuration { get; }
@@ -19,6 +22,14 @@ namespace SMA.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSession(options =>
+            {
+             //   options.IdleTimeout = TimeSpan.FromMinutes(30);//We set Time here 
+             //  options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddControllersWithViews();
         }
 
@@ -38,6 +49,8 @@ namespace SMA.MVC
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 
