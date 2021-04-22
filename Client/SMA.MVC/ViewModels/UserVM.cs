@@ -43,9 +43,7 @@ namespace SMA.MVC.ViewModels
         public string Website { get; set; }
         [Display(Name = "Bio")]
         public string Bio { get; set; }
-        public string Token { get; set; } = ""; //stores the auth token 
-        public bool IsActive { get; set; }     // Use for messanger like app
-
+       
 
     }
 }

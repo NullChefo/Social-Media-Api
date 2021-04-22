@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Post :BaseEntity
-    {
-        [ForeignKey("CreatedByUserId")]
+    public class Post 
+{
+        [Key]
+        public int Id { get; set; }
+
+        [ForeignKey("UserId")]
         public int CreatedByUserId { get; set; }
 
         [ForeignKey("ImageId")]

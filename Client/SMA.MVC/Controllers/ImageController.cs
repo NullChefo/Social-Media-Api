@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http;
@@ -28,8 +29,42 @@ namespace SMA.MVC.Controllers
                 var vms = JsonConvert.DeserializeObject<IEnumerable<ImageVM>>(response);
 
                 return View(vms);
-            }
+            }       
         }
+
+        [HttpGet("{id}")]
+        public IEnumerable<ImageVM> GetAll (int id)
+        {
+            IEnumerable<ImageVM> students = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44321/api/" + "Image/" + id);
+                //HTTP GET
+                var responseTask = client.GetAsync("Image");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<ImageVM>>();
+                    readTask.Wait();
+                    students = readTask.Result;
+                }
+                else //web api sent error response 
+                {
+                    //log response status here..
+
+                    students = Enumerable.Empty<ImageVM>();
+
+                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                }
+            }
+            return students;
+        }
+    
+
+
         [HttpGet]
         ActionResult Create()
         { return View(); }

@@ -17,17 +17,17 @@ namespace SMA.ApplicationServices.ManagementServices
 
         public NotificationDto GetById(int id)
         {
-            return _context.Notifications.Find(id).ToNotificationDto();
+            return _context.Notifications.AsNoTracking().SingleOrDefault(x => x.Id == id).ToNotificationDto();
         }
 
-        public NotificationDto GetByRecipientUserId(int RecipientUserId)
+        public NotificationDto GetByRecipientUserId(int id)
         {
-            return _context.Notifications.Find(RecipientUserId).ToNotificationDto();
+            return _context.Notifications.AsNoTracking().SingleOrDefault(x => x.RecipientUserId == id).ToNotificationDto();
         }
 
-        public NotificationDto GetBySenderUserId(int SenderUserId)
+        public NotificationDto GetBySenderUserId(int id)
         {
-            return _context.Notifications.Find(SenderUserId).ToNotificationDto();
+            return _context.Notifications.AsNoTracking().SingleOrDefault(x => x.SenderUserId == id).ToNotificationDto();
         }
 
         public int Save(NotificationDto notificationDto)

@@ -15,15 +15,20 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Likes.AsNoTracking().AsEnumerable().ToLikeDtos();
         }
 
-        public LikeDto GetByPostId(int PostId)
+        public LikeDto GetByPostId(int id)
         {
-            return _context.Likes.Find(PostId).ToLikeDto();
+            return _context.Likes.AsNoTracking().SingleOrDefault(x => x.PostId == id).ToLikeDto();
         }
 
-        
-             public LikeDto GetById(int id)
+        public int GetByLikesCountByPostId(int id)
         {
-            return _context.Likes.Find(id).ToLikeDto();
+            return _context.Likes.Where(x => x.PostId == id).Count();
+        }
+
+
+        public LikeDto GetById(int id)
+        {
+            return _context.Likes.AsNoTracking().SingleOrDefault(x => x.Id == id).ToLikeDto();
         }
         public int Save(LikeDto likeDto)
         {

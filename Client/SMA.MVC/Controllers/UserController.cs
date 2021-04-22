@@ -33,22 +33,28 @@ namespace SMA.MVC.Controllers
             }
         }
 
-
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public IActionResult Login()
+        public IActionResult Login(UserVM vm)
         {
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var stringVm = JsonConvert.SerializeObject(vm);
+                var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
+                var content = new ByteArrayContent(encodingVM);
+                content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
+                var response = httpClient.PostAsync("", content).Result;
 
-                var response = httpClient.GetStringAsync("").Result;
-                var userVMs = JsonConvert.DeserializeObject<IEnumerable<UserVM>>(response);
-
-                return View(userVMs);
             }
+            return RedirectToAction("Index", "Post");
         }
 
 

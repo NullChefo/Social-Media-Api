@@ -17,14 +17,15 @@ namespace SMA.ApplicationServices.ManagementServices
 
         public ImageDto GetById(int id)
         {
-            return _context.Images.Find(id).ToImageDto();
+            return _context.Images.AsNoTracking().SingleOrDefault(x => x.Id == id).ToImageDto();
+
         }
 
-        
 
-  public ImageDto GetByCreatedByUserId(int CreatedByUserId)
+
+        public ImageDto GetByCreatedByUserId(int CreatedByUserId)
         {
-            return _context.Images.Find(CreatedByUserId).ToImageDto();
+            return _context.Images.AsNoTracking().SingleOrDefault(x => x.CreatedByUserId == CreatedByUserId).ToImageDto();
         }
 
         public int Save(ImageDto imageDto)
@@ -59,7 +60,7 @@ namespace SMA.ApplicationServices.ManagementServices
             }
         }
 
-      
+
 
 
     }

@@ -24,40 +24,33 @@ namespace SMA.WebApiServices.Controllers
         }
 
 
-        [HttpGet, Route("/api/User/GetByFirstName/{name}")]
-        public ActionResult GetByName(string name)
+        [HttpGet, Route("/api/User/GetByEmail/{email}")]
+        public ActionResult GetByEmail(string email)
         {
 
-            if (_service.GetByFirstName(name) == null)
+            if (_service.GetByEmail(email) == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetByFirstName(name));
+                return Ok(_service.GetByEmail(email));
             }
         }
+        [HttpGet, Route("/api/User/PassLoginInfo/{email}/{password}")]
+        public ActionResult PassLoginInfo(string email,string password)
+        {
+            if (_service.PassLoginInfo(email,password) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.PassLoginInfo(email, password));
+            }
 
-
-        //[HttpGet, Route("/api/User/Login/{Email}&{Password}")]
-        //public ActionResult Login(string Email , string Password)
-        //{
-
-        //    if(Email==null || Password == null)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    if (_service.Login(Email,Password) == null )
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        return Ok(_service.Login(Email, Password));
-        //    }
-        //}
-
+        }
+       
 
         [HttpGet, Route("/api/User/{id}")]
         public ActionResult GetById(int id)
@@ -72,6 +65,7 @@ namespace SMA.WebApiServices.Controllers
                 return Ok(_service.GetById(id));
             }
         }
+
         [HttpPost, Route("/api/User/")]
         public ActionResult CreateUser(UserDto userDto)
         {

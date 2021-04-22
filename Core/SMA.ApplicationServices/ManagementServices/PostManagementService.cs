@@ -17,7 +17,7 @@ namespace SMA.ApplicationServices.ManagementServices
 
         public PostDto GetById(int id)
         {
-            return _context.Posts.Find(id).ToPostDto();
+            return _context.Posts.AsNoTracking().SingleOrDefault(x => x.Id == id).ToPostDto();
         }
 
         public PostDto GetByPostBody(string PostBody)

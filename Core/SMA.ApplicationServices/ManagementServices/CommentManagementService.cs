@@ -17,14 +17,19 @@ namespace SMA.ApplicationServices.ManagementServices
 
         public CommentDto GetById(int id)
         {
-            return _context.Comments.Find(id).ToCommentDto();
+            return _context.Comments.AsNoTracking().SingleOrDefault(x => x.Id == id).ToCommentDto();
         }
-      
 
-               public CommentDto GetByCommentBody(string body)
+        public CommentDto GetByPostId(int id)
         {
-            return _context.Comments.Find(body).ToCommentDto();
+            return _context.Comments.AsNoTracking().SingleOrDefault(x => x.PostId == id).ToCommentDto();
         }
+
+        public int GetByCommentsCountByPostId(int id)
+        {
+            return _context.Comments.Where(x => x.PostId == id).Count();
+        }
+
         public int Save(CommentDto commentDto)
         {
             try

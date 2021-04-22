@@ -17,13 +17,19 @@ namespace SMA.ApplicationServices.ManagementServices
 
         public UserDto GetById(int? userId)
         {
-            return _context.Users.Find(userId).ToUserDto();
+            return _context.Users.AsNoTracking().SingleOrDefault(x => x.Id == userId).ToUserDto();
         }
 
 
-        public UserDto GetByFirstName(string FirstName)
+        public UserDto GetByEmail(string Email)
         {
-            return _context.Users.Find(FirstName).ToUserDto();
+            return _context.Users.AsNoTracking().SingleOrDefault(x => x.UserEmail == Email).ToUserDto();
+        }
+
+        public UserDto PassLoginInfo(string Email,string Password)
+        {
+            return _context.Users.AsNoTracking().SingleOrDefault(x => x.UserEmail == Email && x.UserPassword == Password).ToUserDto();
+
         }
 
 

@@ -17,13 +17,9 @@ namespace SMA.ApplicationServices.Helpers
             {
                 Id = commentDto.CommentId,
                 CreatedByUserId = commentDto.CreatedByUserId,
-                CreatedOn = commentDto.CreatedOn,
-                UpdatedOn = commentDto.UpdatedOn,
                 CommentBody = commentDto.CommentBody,
-                PostId = commentDto.PostId,
-                ImageId = commentDto.ImageId,
-                CommentCount = commentDto.CommentCount,
-                LikeCount = commentDto.LikeCount
+                PostId = commentDto.PostId
+               
             };
         }
 
@@ -33,13 +29,8 @@ namespace SMA.ApplicationServices.Helpers
             {
                 CommentId = comment.Id,
                 CreatedByUserId = comment.CreatedByUserId,
-                CreatedOn = comment.CreatedOn,
-                UpdatedOn = comment.UpdatedOn,
                 CommentBody = comment.CommentBody,
                 PostId = comment.PostId,
-                ImageId = comment.ImageId,
-                CommentCount = comment.CommentCount,
-                LikeCount = comment.LikeCount
                 
 
             };
@@ -62,9 +53,9 @@ namespace SMA.ApplicationServices.Helpers
             {
                 Id = imageDto.ImageId,
                 CreatedByUserId = imageDto.CreatedByUserId,
-                CreatedOn = imageDto.CreatedOn,
-                UpdatedOn = imageDto.UpdatedOn,
                 ImageUrl = imageDto.ImageUrl,
+                CreatedOn = imageDto.CreatedOn,
+                UpdatedOn=imageDto.UpdatedOn
 
             };
         }
@@ -75,8 +66,6 @@ namespace SMA.ApplicationServices.Helpers
             {
                 ImageId = image.Id,
                 CreatedByUserId = image.CreatedByUserId,
-                CreatedOn = image.CreatedOn,
-                UpdatedOn = image.UpdatedOn,
                 ImageUrl = image.ImageUrl,
             };
         }
@@ -96,7 +85,9 @@ namespace SMA.ApplicationServices.Helpers
         {
             return new Like
             {
-                Id = likeDto.LikeId
+                Id = likeDto.LikeId,
+                PostId = likeDto.PostId,
+                CreatedByUserId = likeDto.CreatedByUserId
             };
         }
 
@@ -105,8 +96,8 @@ namespace SMA.ApplicationServices.Helpers
             return new LikeDto
             {
                 LikeId = like.Id,
-                PostID = like.PostId,
-                UserId = like.CreatedByUserId
+                PostId = like.PostId,
+                CreatedByUserId = like.CreatedByUserId
 
             };
         }
@@ -126,7 +117,7 @@ namespace SMA.ApplicationServices.Helpers
         {
             return new Notification
             {
-                Id = notificationDto.NotificationId,
+               Id = notificationDto.NotificationId,
                 IsRead = notificationDto.IsRead,
                 RecipientUserId = notificationDto.RecipientUserId,
                 PostId = notificationDto.PostId,
@@ -166,8 +157,7 @@ namespace SMA.ApplicationServices.Helpers
             {
                 Id = postDto.PostId,
                 CreatedByUserId = postDto.CreatedByUserId,
-                CreatedOn = postDto.CreatedOn,
-                UpdatedOn = postDto.UpdatedOn,
+               
                 PostBody = postDto.PostBody,
                 CommentCount = postDto.CommentCount,
                 LikeCount = postDto.LikeCount,
@@ -182,10 +172,6 @@ namespace SMA.ApplicationServices.Helpers
             {
                 PostId = post.Id,
                 CreatedByUserId = post.CreatedByUserId,
-                CreatedOn = post.CreatedOn,
-                UpdatedOn = post.UpdatedOn,
-
-
                 PostBody = post.PostBody,
                 CommentCount = post.CommentCount,
                 LikeCount = post.LikeCount,
@@ -218,9 +204,8 @@ namespace SMA.ApplicationServices.Helpers
                 ImageId = userDto.ImageId,
                 Location = userDto.Location,
                 Website = userDto.Website,
-                Bio = userDto.Bio,
-                IsActive = userDto.IsActive
-
+                Bio = userDto.Bio
+                
             };
         }
 
@@ -239,8 +224,8 @@ namespace SMA.ApplicationServices.Helpers
                 ImageId = user.ImageId,
                 Location = user.Location,
                 Website = user.Website,
-                Bio = user.Bio,
-                IsActive = user.IsActive
+                Bio = user.Bio
+                
             };
         }
 
@@ -248,7 +233,6 @@ namespace SMA.ApplicationServices.Helpers
         {
             return user.Select(x => x.ToUserDto());
         }
-
 
 
 

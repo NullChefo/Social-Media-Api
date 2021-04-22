@@ -40,9 +40,6 @@ namespace SMA.WebApiServices.Controllers
         }
 
 
-    
-
-
         [HttpGet, Route("/api/Like/GetByPostId/{id}")]
         public ActionResult GetByPostId(int id)
         {
@@ -56,6 +53,22 @@ namespace SMA.WebApiServices.Controllers
                 return Ok(_service.GetByPostId(id));
             }
         }
+
+        [HttpGet, Route("/api/Like/GetByLikesCountByPostId/{id}")]
+        public ActionResult GetByLikesCountByPostId(int id)
+        {
+
+            if (_service.GetByLikesCountByPostId(id) == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.GetByLikesCountByPostId(id));
+            }
+        }
+
+
 
         [HttpPost, Route("/api/Like")]
         public ActionResult CreateUser(LikeDto likeDto)

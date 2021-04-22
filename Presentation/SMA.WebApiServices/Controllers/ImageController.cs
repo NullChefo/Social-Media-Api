@@ -50,7 +50,7 @@ namespace SMA.WebApiServices.Controllers
 
 
 
-        [HttpGet, Route("/api/Image/{id}")]
+        [HttpGet, Route("/api/Image/GetById/{id}")]
         public ActionResult GetById(int id)
         {
 

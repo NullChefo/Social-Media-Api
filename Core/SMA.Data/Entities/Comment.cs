@@ -7,26 +7,23 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Comment : BaseEntity
+    public class Comment 
     {
 
-
+        [Key]
+        public int Id { get; set; }
 
         [StringLength(255)]
         public string CommentBody { get; set; } = "";
 
-        [ForeignKey("CreatedByUserId")]
+        [ForeignKey("UserId")]
         public int CreatedByUserId { get; set; }
 
         [ForeignKey("PostId")]
-         public int? PostId { get; set; }
+        public int? PostId { get; set; }
 
     
-        [ForeignKey("ImageId")]
-        public int? ImageId { get; set; }
-
-        public uint LikeCount { get; set; } = 0;
-        public uint CommentCount { get; set; } = 0;
+      
 
 
 

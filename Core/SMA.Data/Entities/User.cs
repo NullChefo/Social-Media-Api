@@ -34,7 +34,7 @@ namespace SMA.Data.Entities
         public string LastName { get; set; } 
 
         [ForeignKey("ImageId")]
-        public int? ImageId { get; set; }
+        public int ImageId { get; set; }
 
         [StringLength(50)]
         public string Location { get; set; } = "";
@@ -44,12 +44,7 @@ namespace SMA.Data.Entities
         public string Bio { get; set; } = "";
         
 
-        public bool IsActive { get; set; }// Use for messanger like app
-
-
        
     }
-
-
 
 }
