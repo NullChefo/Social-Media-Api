@@ -21,6 +21,17 @@ namespace SMA.ApplicationServices.ManagementServices
         }
 
 
+      public string GetByUserIdTheFullNameOfUser(int id)
+        {
+
+            UserDto user = _context.Users.AsNoTracking().SingleOrDefault(x => x.Id == id).ToUserDto();
+            string UserFullName = user.FirstName + " " + user.MidleName + " " + user.LastName  ;
+
+            return UserFullName;
+
+        }
+
+
         public UserDto GetByEmail(string Email)
         {
 
@@ -30,7 +41,8 @@ namespace SMA.ApplicationServices.ManagementServices
         public int GetUserIdByEmail(string Email)
         {
             UserDto user = _context.Users.AsNoTracking().SingleOrDefault(x => x.UserEmail == Email).ToUserDto();
-            return user.UserId;
+           int UserId = user.UserId;
+           return UserId;
         }
 
 

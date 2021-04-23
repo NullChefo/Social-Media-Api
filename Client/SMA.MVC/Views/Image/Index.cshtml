@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SMA.MVC.ViewModels.ImageVM>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (!Model.Any())
+{
+    <span class="alert-info">No images object</span>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Created on</th>
+                <th>Created by user</th>
+                <th>Image url</th>
+                <th>Updated on</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                
+
+
+            <tr>
+                <td>@item.ImageId</td>
+                <td>@item.CreatedOn</td>
+                <td>@item.CreatedByUserId</td>
+                <td>@item.ImageUrl</td>
+                <td>@item.UpdatedOn</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = item.ImageId })</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

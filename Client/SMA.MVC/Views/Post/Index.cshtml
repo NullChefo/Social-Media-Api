@@ -4,78 +4,45 @@
 }
 
 <h2>Index</h2>
+<a href="/User/Create"><img src="~/img/add.png" width="40" height="40" /></a>
 
 @if (!Model.Any())
 {
-    <span class="alert-info">No posts</span>
+    <span class="alert-info">No posts object</span>
 }
 else
 {
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Image id</th>
+                <th>Created by user</th>
+                <th>Post body</th>
+                <th>Likes </th>
+                <th>Comments </th>
+                <th></th>
 
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
 
-    @foreach (var item in Model)
-    {
+                <tr>
 
+                    <td>@item.PostId </td>
+                    <td>@item.GetImagePathByImageId(item.ImageId)</td>
+                    <td>@item.GetByUserIdTheFullNameOfUser(item.CreatedByUserId)</td>
+                    <td>@item.PostBody</td>
+                    <td>@item.GetLikesCountByPostId(item.PostId); </td>
+                    <td>@item.GetLikesCountByPostId(item.PostId) </td>
 
-
-        
-        
-
-        <div class="card">
-            <img src="@item.ImageId" class="card-img-top" alt="..." /> <!--make to find the path to image--->
-            <div class="card-body">
-                <h5 class="card-title">@item.CreatedByUserId</h5> <!--Find Firs & Last Name-->
-                <p class="card-text">
-                    @item.PostBody
-                </p>
-                <a href="#!" class="btn btn-primary">Likes</a>
-                <a href="#!" class="btn btn-primary">Comments</a>
-                <a href="@Html.ActionLink("Delete", "Delete", new { id = item.PostId })" class="btn btn-primary">Delete</a>
-            </div>
-        </div>
-
-
-        <div class="card" style="width: 18rem">
-            <img src="@item.ImageId"
-                 class="card-img-top"
-                 alt="..." />
-            <div class="card-body">
-                <h5 class="card-title">@item.CreatedByUserId</h5>
-                <p class="card-text">
-                    @item.PostBody
-                </p>
-            </div>
-            
-
-
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"> </li>
-                <li class="list-group-item">
-                    <a href="#!" class="btn btn-primary">Likes</a>
-                    <a href="#!" class="btn btn-primary">Comments</a>
-                    <a href="@Html.ActionLink("Delete", "Delete", new { id = item.PostId })" class="btn btn-primary">Delete</a>
-                </li>
-                <li class="list-group-item"> </li>
-            </ul>
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                 
-                        <li class="list-group-item">Cras justo odio</li>
-                        
-
-                    
-                </ul>
-                </div>
-        </div>
-
-
-
-
-
-    }
-
-
-
-
-
+                    <td>@Html.ActionLink("Delete", "Delete", new { id = item.PostId })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
+
+

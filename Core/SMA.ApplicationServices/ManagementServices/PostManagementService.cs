@@ -25,6 +25,7 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Posts.Find(PostBody).ToPostDto();
         }
 
+
         public int Save(PostDto postDto)
         {
             try

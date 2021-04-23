@@ -20,23 +20,23 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Index">Posts</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/Post/Index">Posts</a></li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Notification" asp-action="Index">Notification</a>
+                            <a class="nav-link text-dark" href="/Notification/Index">Notification</a>
                         </li>
                       
 
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="@(this.Context.Session.GetString("Token") != "" ? "User/Create" : "User/Account")">
-                                @(this.Context.Session.GetString("UserId") != "" ? "Sign Up" : "Account")
+                            <a class="nav-link text-dark" href="@(Context.Session.GetString("UserId") != null ?"/User/Account" :  "/User/Create")">
+                                @(this.Context.Session.GetString("UserId") != null ? "Account" :  "Sign Up")
                             </a>
                         </li>
 
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="@(this.Context.Session.GetString("Token") != "" ? "User/Login" : "")">
-                                @(this.Context.Session.GetString("UserId") != "" ? "Login" : "")
+                            <a class="nav-link text-dark" href="@(Context.Session.GetString("UserId") != null ? "" : "/User/Login")">
+                                @(this.Context.Session.GetString("UserId") != null ? "" : "Login")
                             </a>
                         </li>
 
@@ -50,8 +50,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @(this.Context.Session.GetString("Token"))
-            @(this.Context.Session.GetString("UserId"))
+          
             @RenderBody()
         </main>
     </div>

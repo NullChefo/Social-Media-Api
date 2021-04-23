@@ -6,16 +6,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using SMA.ApplicationServices.ManagementServices;
 using SMA.ApplicationServices.DTOs;
+//using Microsoft.AspNetCore.Authorization;
 
 namespace SMA.WebApiServices.Controllers
 {
+   // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CommentController : ControllerBase
     {
         private readonly CommentManagementService _service = new CommentManagementService();
 
-
+         
         [HttpGet]
         public ActionResult GetAll()
         {
@@ -38,17 +40,17 @@ namespace SMA.WebApiServices.Controllers
         }
 
 
-        [HttpGet, Route("/api/Comment/GetByCommentsCountByPostId/{body}")]
-        public ActionResult GetByCommentsCountByPostId(int id)
+        [HttpGet, Route("/api/Comment/GetCommentsCountByPostId/{id}")]
+        public ActionResult GetCommentsCountByPostId(int id)
         {
 
-            if (_service.GetByCommentsCountByPostId(id) == 0)
+            if (_service.GetCommentsCountByPostId(id) == 0)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetByCommentsCountByPostId(id));
+                return Ok(_service.GetCommentsCountByPostId(id));
             }
         }
 

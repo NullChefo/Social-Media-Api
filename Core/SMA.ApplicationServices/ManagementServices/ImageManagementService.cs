@@ -21,12 +21,22 @@ namespace SMA.ApplicationServices.ManagementServices
 
         }
 
-
+        
 
         public ImageDto GetByCreatedByUserId(int CreatedByUserId)
         {
             return _context.Images.AsNoTracking().SingleOrDefault(x => x.CreatedByUserId == CreatedByUserId).ToImageDto();
         }
+
+        public string GetImagePathByImageId(int imageId)
+        {
+           ImageDto img =  _context.Images.AsNoTracking().SingleOrDefault(x => x.Id == imageId).ToImageDto();
+
+            string ImgPath = img.ImageUrl;
+
+            return ImgPath;
+        }
+
 
         public int Save(ImageDto imageDto)
         {

@@ -17,7 +17,10 @@ else
                 <th>#</th>
                 <th>User email</th>
                 <th>First name</th>
-                <th>Last name</th>
+                <th>Midle name</th>
+                <th>Location</th>
+                <th>Bio</th>
+                <th>Website</th>
                 <th></th>
 
             </tr>
@@ -29,8 +32,13 @@ else
                 <td>@item.UserId</td>
                 <td>@item.UserEmail</td>
                 <td>@item.FirstName</td>
+                <td>@item.MidleName</td>
                 <td>@item.LastName</td>
-                <td>@Html.ActionLink("Delete", "Delete", new { id = item.UserId })</td> 
+              
+                <td>@item.Location</td>
+                <td>@item.Bio</td>
+                <td>@item.Website</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = item.UserId })</td>
             </tr>
             }
         </tbody>

@@ -17,28 +17,34 @@ namespace SMA.MVC.Controllers
         private readonly Uri url = new Uri("https://localhost:44321/api/Image");
 
         // GET: Images
-        public ActionResult Index()
+          public IActionResult Index()
         {
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
+
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = httpClient.GetStringAsync("").Result;
                 var vms = JsonConvert.DeserializeObject<IEnumerable<ImageVM>>(response);
 
                 return View(vms);
-            }       
+            }
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<ImageVM> GetAll (int id)
+        public IEnumerable<ImageVM> GetAll(int id)
         {
             IEnumerable<ImageVM> students = null;
 
             using (var client = new HttpClient())
+
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
                 client.BaseAddress = new Uri("https://localhost:44321/api/" + "Image/" + id);
                 //HTTP GET
                 var responseTask = client.GetAsync("Image");
@@ -62,39 +68,45 @@ namespace SMA.MVC.Controllers
             }
             return students;
         }
-    
+
 
 
         [HttpGet]
-        ActionResult Create()
+        public IActionResult Create()
         { return View(); }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        ActionResult Create(LikeVM vm)
+        public IActionResult Create(LikeVM vm)
         {
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var stringVm = JsonConvert.SerializeObject(vm);
                 var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
                 var content = new ByteArrayContent(encodingVM);
                 content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
                 var response = httpClient.PostAsync("", content).Result;
+
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index");
+          
         }
 
         [HttpGet]
-        ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = httpClient.GetStringAsync(url + "/" + id).Result;
@@ -105,12 +117,14 @@ namespace SMA.MVC.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        ActionResult DeleteComfirm(int id)
+      public  IActionResult DeleteComfirm(int id)
         {
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = httpClient.DeleteAsync(url + "/" + id).Result;

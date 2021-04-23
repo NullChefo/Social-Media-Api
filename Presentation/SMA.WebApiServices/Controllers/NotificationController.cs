@@ -6,9 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using SMA.ApplicationServices.ManagementServices;
 using SMA.ApplicationServices.DTOs;
+//using Microsoft.AspNetCore.Authorization;
 
 namespace SMA.WebApiServices.Controllers
 {
+  //  [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class NotificationController : ControllerBase
@@ -16,14 +18,14 @@ namespace SMA.WebApiServices.Controllers
         private readonly NotificationManagementService _service = new NotificationManagementService();
 
 
-
+       
         [HttpGet]
         public ActionResult GetAll()
         {
             return Ok(_service.GetAll());
         }
 
-
+        
         [HttpGet, Route("/api/Notification/GetByRecipientUserId/{id}")]
         public ActionResult GetByRecipientUserId(int id)
         {
@@ -38,7 +40,7 @@ namespace SMA.WebApiServices.Controllers
             }
         }
 
-
+    
         [HttpGet, Route("/api/Notification/GetBySenderUserId/{id}")]
         public ActionResult GetBySenderUserId(int id)
         {
@@ -53,7 +55,7 @@ namespace SMA.WebApiServices.Controllers
             }
         }
 
-
+     
         [HttpGet, Route("/api/Notification/{id}")]
         public ActionResult Get(int id)
         {
@@ -67,13 +69,14 @@ namespace SMA.WebApiServices.Controllers
                 return Ok(_service.GetById(id));
             }
         }
+     
         [HttpPost, Route("/api/Notification")]
         public ActionResult CreateUser(NotificationDto notificationDto)
         {
             return Ok(_service.Save(notificationDto));
 
         }
-
+      
         [HttpDelete, Route("/api/Notification/{id}")]
         public ActionResult Delete(int id)
         { 

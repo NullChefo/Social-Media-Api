@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SMA.MVC.ViewModels.CommentVM>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (!Model.Any())
+{
+<span class="alert-info">No comments object</span>
+}
+else
+{
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>CommentBody</th>
+            <th>CreatedByUserId</th>
+            <th>PostId</th>
+          
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+        <tr>
+            <td>@item.CommentId</td>
+            <td>@item.CommentBody</td>
+            <td>@item.CreatedByUserId</td>
+            <td>@item.PostId</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = item.CommentId })</td>
+        </tr>
+            }
+    </tbody>
+</table>
+}

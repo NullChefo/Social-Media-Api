@@ -14,7 +14,7 @@ namespace SMA.MVC.Controllers
     {
 
         private readonly Uri url = new Uri("https://localhost:44321/api/User");
-
+        private readonly Uri urlImage = new Uri("https://localhost:44321/api/Image");
 
         // GET: Users
         public IActionResult Index()
@@ -23,6 +23,8 @@ namespace SMA.MVC.Controllers
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = httpClient.GetStringAsync("").Result;
@@ -38,23 +40,6 @@ namespace SMA.MVC.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Login(UserVM vm)
-        //{
-        //    using (HttpClient httpClient = new HttpClient())
-        //    {
-        //        httpClient.BaseAddress = url;
-        //        httpClient.DefaultRequestHeaders.Accept.Clear();
-        //        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        var stringVm = JsonConvert.SerializeObject(vm);
-        //        var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
-        //        var content = new ByteArrayContent(encodingVM);
-        //        content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
-        //        var response = httpClient.PostAsync("", content).Result;
-
-        //    }
-        //    return RedirectToAction("Index", "Post");
-        //}
 
         [HttpPost]
         public async Task<IActionResult> Login(UserVM userVM)
@@ -92,8 +77,9 @@ namespace SMA.MVC.Controllers
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    var response = await httpClient.GetStringAsync(url + "/" + "GetByEmail" + "/" + email);
+                    var response = await httpClient.GetStringAsync(url + "/" + "GetUserIdByEmail" + "/" + email);
                     UserId = response;
+                   
                 }
                 catch (Exception e)
                 {
@@ -106,6 +92,8 @@ namespace SMA.MVC.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
+
+            
         }
   
 
@@ -124,6 +112,7 @@ namespace SMA.MVC.Controllers
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
+
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var stringVm = JsonConvert.SerializeObject(vm);
                 var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
@@ -131,6 +120,28 @@ namespace SMA.MVC.Controllers
                 content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
                 var response = httpClient.PostAsync("", content).Result;
             }
+
+
+            // Create Image 
+            ImageVM imagevm = new ImageVM();
+
+              Uri urlImage = new Uri("https://localhost:44321/api/Image");
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = urlImage;
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var stringVm = JsonConvert.SerializeObject(imagevm);
+                var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
+                var content = new ByteArrayContent(encodingVM);
+                content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
+                var response = httpClient.PostAsync("", content).Result;
+            }
+
+
+           
+
 
             return RedirectToAction("Login", "User");
         }
@@ -145,6 +156,8 @@ namespace SMA.MVC.Controllers
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = httpClient.GetStringAsync(url + "/" + id).Result;
@@ -161,6 +174,8 @@ namespace SMA.MVC.Controllers
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = httpClient.DeleteAsync(url + "/" + id).Result;

@@ -6,32 +6,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using SMA.ApplicationServices.ManagementServices;
 using SMA.ApplicationServices.DTOs;
-
-
-
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+//using Microsoft.AspNetCore.Authorization;
 
 namespace SMA.WebApiServices.Controllers
 {
 
-
-
+    
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private readonly UserManagementService _service = new UserManagementService();
 
-
+//      [Authorize]
         [HttpGet]
         public ActionResult GetAll()
         {
             return Ok(_service.GetAll());
         }
 
-
+ //     [Authorize]
         [HttpGet, Route("/api/User/GetByEmail/{email}")]
         public ActionResult GetByEmail(string email)
         {
@@ -46,7 +43,7 @@ namespace SMA.WebApiServices.Controllers
             }
         }
 
-
+//      [Authorize]
         [HttpGet, Route("/api/User/GetUserIdByEmail/{email}")]
         public ActionResult GetUserIdByEmail(string email)
         {
@@ -61,7 +58,7 @@ namespace SMA.WebApiServices.Controllers
             }
         }
 
-
+//     [Authorize]
         [HttpGet, Route("/api/User/PassLoginInfo/{email}&{password}")]
         public ActionResult PassLoginInfo(string email, string password)
         {
@@ -77,9 +74,24 @@ namespace SMA.WebApiServices.Controllers
 
         }
 
+//      [Authorize]
+        [HttpGet, Route("/api/User/GetByUserIdTheFullNameOfUser/{id}")]
+        public ActionResult GetByIdTheFullNameOfUser(int id)
+        {
+
+            if (_service.GetByUserIdTheFullNameOfUser(id) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.GetByUserIdTheFullNameOfUser(id));
+            }
+        }
 
 
 
+        //    [Authorize]
         [HttpGet, Route("/api/User/{id}")]
         public ActionResult GetById(int id)
         {
@@ -102,7 +114,7 @@ namespace SMA.WebApiServices.Controllers
 
         }
 
-
+ //       [Authorize]
         [HttpDelete, Route("/api/User/{id}")]
         public ActionResult Delete(int id)
         {

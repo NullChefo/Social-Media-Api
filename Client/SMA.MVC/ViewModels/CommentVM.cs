@@ -9,12 +9,13 @@ namespace SMA.MVC.ViewModels
     {
         public int CommentId { get; set; }
         public int CreatedByUserId { get; set; }
-
         public string CommentBody { get; set; }
         public int? PostId { get; set; }
       
-
-
-
+        
     }
+
+
+
+
 }

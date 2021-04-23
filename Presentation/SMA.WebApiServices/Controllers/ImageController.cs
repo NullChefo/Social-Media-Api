@@ -25,15 +25,15 @@ namespace SMA.WebApiServices.Controllers
             _environment = environment ?? throw new ArgumentNullException(nameof(environment));
         }
 
-
+        //      [Authorize]
         [HttpGet]
         public ActionResult GetAll()
         {
             return Ok(_service.GetAll());
         }
-        
 
 
+        //      [Authorize]
         [HttpGet, Route("/api/Image/GetByCreatedByUserId/{id}")]
         public ActionResult GetByPostId(int id)
         {
@@ -48,8 +48,23 @@ namespace SMA.WebApiServices.Controllers
             }
         }
 
+        //      [Authorize]
+        [HttpGet, Route("/api/Image/GetImagePathByImageId/{id}")]
+        public ActionResult GetImagePathByImageId(int id)
+        {
+
+            if (_service.GetImagePathByImageId(id) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_service.GetImagePathByImageId(id));
+            }
+        }
 
 
+        //      [Authorize]
         [HttpGet, Route("/api/Image/GetById/{id}")]
         public ActionResult GetById(int id)
         {
@@ -109,8 +124,8 @@ namespace SMA.WebApiServices.Controllers
 
         #endregion
 
-      
 
+        //      [Authorize]
         [HttpDelete, Route("/api/Image/{id}")]
         public ActionResult Delete(int id)
         {

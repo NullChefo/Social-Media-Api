@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SMA.MVC.ViewModels.NotificationVM>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (!Model.Any())
+{
+<span class="alert-info">No notifications object</span>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Created at</th>
+                <th>IsRead</th>
+                <th>Sender</th>
+                <th>Recepiant</th>
+                <th>PostId</th>
+                <th>Type</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+
+
+            <tr>
+                <td>@item.NotificationId</td>
+                <td>@item.CreatedAt</td>
+                <td>@item.IsRead</td>
+                <td>@GetByUserIdTheFullNameOfUser(item.SenderUserId)</td>
+                <td>@GetByUserIdTheFullNameOfUser(item.RecipientUserId)</td>
+                <td>@item.PostId</td>
+                <td>@item.Type</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = item.NotificationId })</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

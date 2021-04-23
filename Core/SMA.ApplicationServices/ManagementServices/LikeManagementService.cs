@@ -20,7 +20,7 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Likes.AsNoTracking().SingleOrDefault(x => x.PostId == id).ToLikeDto();
         }
 
-        public int GetByLikesCountByPostId(int id)
+        public int GetLikesCountByPostId(int id)
         {
             return _context.Likes.Where(x => x.PostId == id).Count();
         }

@@ -25,7 +25,7 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Comments.AsNoTracking().SingleOrDefault(x => x.PostId == id).ToCommentDto();
         }
 
-        public int GetByCommentsCountByPostId(int id)
+        public int GetCommentsCountByPostId(int id)
         {
             return _context.Comments.Where(x => x.PostId == id).Count();
         }

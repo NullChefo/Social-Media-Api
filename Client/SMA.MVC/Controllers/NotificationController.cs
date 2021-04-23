@@ -16,12 +16,14 @@ namespace SMA.MVC.Controllers
         private readonly Uri url = new Uri("https://localhost:44321/api/Notification");
 
         // GET: Notifications
-        public ActionResult Index()
+        public IActionResult Index()
         {
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = httpClient.GetStringAsync("").Result;
@@ -30,60 +32,66 @@ namespace SMA.MVC.Controllers
                 return View(vms);
             }
         }
-           [HttpGet]
-            ActionResult Create()
-            { return View(); }
+        [HttpGet]
+        public IActionResult Create()
+        { return View(); }
 
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            ActionResult Create(NotificationVM vm)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(NotificationVM vm)
+        {
+            using (HttpClient httpClient = new HttpClient())
             {
-                using (HttpClient httpClient = new HttpClient())
-                {
-                    httpClient.BaseAddress = url;
-                    httpClient.DefaultRequestHeaders.Accept.Clear();
-                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var stringVm = JsonConvert.SerializeObject(vm);
-                    var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
-                    var content = new ByteArrayContent(encodingVM);
-                    content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
-                    var response = httpClient.PostAsync("", content).Result;
-                }
+                httpClient.BaseAddress = url;
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var stringVm = JsonConvert.SerializeObject(vm);
+                var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
+                var content = new ByteArrayContent(encodingVM);
+                content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
+                var response = httpClient.PostAsync("", content).Result;
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = url;
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = httpClient.GetStringAsync(url + "/" + id).Result;
+                var vm = JsonConvert.DeserializeObject<NotificationVM>(response);
+
+                return View(vm);
+            }
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteComfirm(int id)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = url;
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = httpClient.DeleteAsync(url + "/" + id).Result;
 
                 return RedirectToAction("Index");
             }
-
-            [HttpGet]
-            ActionResult Delete(int id)
-            {
-                using (HttpClient httpClient = new HttpClient())
-                {
-                    httpClient.BaseAddress = url;
-                    httpClient.DefaultRequestHeaders.Accept.Clear();
-                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    var response = httpClient.GetStringAsync(url + "/" + id).Result;
-                    var vm = JsonConvert.DeserializeObject<NotificationVM>(response);
-
-                    return View(vm);
-                }
-            }
-
-            [HttpPost, ActionName("Delete")]
-            ActionResult DeleteComfirm(int id)
-            {
-                using (HttpClient httpClient = new HttpClient())
-                {
-                    httpClient.BaseAddress = url;
-                    httpClient.DefaultRequestHeaders.Accept.Clear();
-                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    var response = httpClient.DeleteAsync(url + "/" + id).Result;
-
-                    return RedirectToAction("Index");
-                }
-            }
         }
     }
+}
 
 
