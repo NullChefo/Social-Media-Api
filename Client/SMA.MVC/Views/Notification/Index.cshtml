@@ -1,13 +1,14 @@
-﻿@model IEnumerable<SMA.MVC.ViewModels.NotificationVM>
+﻿@using Microsoft.AspNetCore.Http;
+@model IEnumerable<SMA.MVC.ViewModels.NotificationVM>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<center><h2>Index</h2></center>
 
-@if (!Model.Any())
+@if (Model == null)
 {
-<span class="alert-info">No notifications object</span>
+<center> <span class="alert-info">No notifications object</span></center>
 }
 else
 {
@@ -21,25 +22,32 @@ else
                 <th>Recepiant</th>
                 <th>PostId</th>
                 <th>Type</th>
+                <th>CreatedOn</th>
+                <th>UpdatedBy</th>
+                <th>UpdatedOn</th>
                 <th></th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in  Model)
             {
 
 
 
             <tr>
                 <td>@item.NotificationId</td>
-                <td>@item.CreatedAt</td>
+                <td>@item.CreatedOn</td>
                 <td>@item.IsRead</td>
-                <td>@GetByUserIdTheFullNameOfUser(item.SenderUserId)</td>
-                <td>@GetByUserIdTheFullNameOfUser(item.RecipientUserId)</td>
+
+                <td>@item.RecipientUserId </td>
+                <td>@item.RecipientUserId </td>
                 <td>@item.PostId</td>
                 <td>@item.Type</td>
-                <td>@Html.ActionLink("Delete", "Delete", new { id = item.NotificationId })</td>
+                <td>@item.CreatedOn</td>
+                <td>@item.UpdatedBy</td>
+                <td>@item.UpdatedOn</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.NotificationId }) / @Html.ActionLink("Delete", "Delete", new { id = item.NotificationId })</td>
             </tr>
             }
         </tbody>

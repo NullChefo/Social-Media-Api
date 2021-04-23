@@ -50,7 +50,7 @@ namespace SMA.MVC
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseStaticFiles();
+            
 
             app.UseRouting();
 

@@ -18,7 +18,11 @@ namespace SMA.ApplicationServices.Helpers
                 Id = commentDto.CommentId,
                 CreatedByUserId = commentDto.CreatedByUserId,
                 CommentBody = commentDto.CommentBody,
-                PostId = commentDto.PostId
+                PostId = commentDto.PostId,
+                CreatedOn= commentDto.CreatedOn,
+                UpdatedOn = commentDto.UpdatedOn,
+                UpdatedBy = commentDto.UpdatedBy
+               
                
             };
         }
@@ -31,7 +35,9 @@ namespace SMA.ApplicationServices.Helpers
                 CreatedByUserId = comment.CreatedByUserId,
                 CommentBody = comment.CommentBody,
                 PostId = comment.PostId,
-                
+                CreatedOn = comment.CreatedOn,
+                UpdatedOn = comment.UpdatedOn,
+                UpdatedBy = comment.UpdatedBy
 
             };
         }
@@ -55,7 +61,8 @@ namespace SMA.ApplicationServices.Helpers
                 CreatedByUserId = imageDto.CreatedByUserId,
                 ImageUrl = imageDto.ImageUrl,
                 CreatedOn = imageDto.CreatedOn,
-                UpdatedOn=imageDto.UpdatedOn
+                UpdatedOn=imageDto.UpdatedOn,
+                UpdatedBy=imageDto.UpdatedBy
 
             };
         }
@@ -67,6 +74,9 @@ namespace SMA.ApplicationServices.Helpers
                 ImageId = image.Id,
                 CreatedByUserId = image.CreatedByUserId,
                 ImageUrl = image.ImageUrl,
+                CreatedOn = image.CreatedOn,
+                UpdatedOn = image.UpdatedOn,
+                UpdatedBy = image.UpdatedBy
             };
         }
 
@@ -87,7 +97,10 @@ namespace SMA.ApplicationServices.Helpers
             {
                 Id = likeDto.LikeId,
                 PostId = likeDto.PostId,
-                CreatedByUserId = likeDto.CreatedByUserId
+                CreatedByUserId = likeDto.CreatedByUserId,
+                CreatedOn = likeDto.CreatedOn,
+                UpdatedOn = likeDto.UpdatedOn,
+                UpdatedBy = likeDto.UpdatedBy
             };
         }
 
@@ -97,7 +110,10 @@ namespace SMA.ApplicationServices.Helpers
             {
                 LikeId = like.Id,
                 PostId = like.PostId,
-                CreatedByUserId = like.CreatedByUserId
+                CreatedByUserId = like.CreatedByUserId,
+                CreatedOn = like.CreatedOn,
+                UpdatedOn = like.UpdatedOn,
+                UpdatedBy = like.UpdatedBy
 
             };
         }
@@ -122,7 +138,10 @@ namespace SMA.ApplicationServices.Helpers
                 RecipientUserId = notificationDto.RecipientUserId,
                 PostId = notificationDto.PostId,
                 SenderUserId = notificationDto.SenderUserId,
-                Type = notificationDto.Type
+                Type = notificationDto.Type,
+                CreatedOn = notificationDto.CreatedOn,
+                UpdatedOn = notificationDto.UpdatedOn,
+                UpdatedBy = notificationDto.UpdatedBy
 
             };
         }
@@ -136,7 +155,10 @@ namespace SMA.ApplicationServices.Helpers
                 RecipientUserId = notification.RecipientUserId,
                 PostId = notification.PostId,
                 SenderUserId = notification.SenderUserId,
-                Type = notification.Type
+                Type = notification.Type,
+                CreatedOn = notification.CreatedOn,
+                UpdatedOn = notification.UpdatedOn,
+                UpdatedBy = notification.UpdatedBy
             };
         }
 
@@ -157,11 +179,11 @@ namespace SMA.ApplicationServices.Helpers
             {
                 Id = postDto.PostId,
                 CreatedByUserId = postDto.CreatedByUserId,
-               
                 PostBody = postDto.PostBody,
-                CommentCount = postDto.CommentCount,
-                LikeCount = postDto.LikeCount,
-                ImageId = postDto.ImageId
+                ImageId = postDto.ImageId,
+                 CreatedOn = postDto.CreatedOn,
+                UpdatedOn = postDto.UpdatedOn,
+                UpdatedBy = postDto.UpdatedBy
 
             };
         }
@@ -173,9 +195,10 @@ namespace SMA.ApplicationServices.Helpers
                 PostId = post.Id,
                 CreatedByUserId = post.CreatedByUserId,
                 PostBody = post.PostBody,
-                CommentCount = post.CommentCount,
-                LikeCount = post.LikeCount,
-                ImageId=post.ImageId
+                ImageId=post.ImageId,
+                 CreatedOn = post.CreatedOn,
+                UpdatedOn = post.UpdatedOn,
+                UpdatedBy = post.UpdatedBy
             };
         }
 
@@ -204,8 +227,12 @@ namespace SMA.ApplicationServices.Helpers
                 ImageId = userDto.ImageId,
                 Location = userDto.Location,
                 Website = userDto.Website,
-                Bio = userDto.Bio
-                
+                Bio = userDto.Bio,
+
+                  CreatedOn = userDto.CreatedOn,
+                UpdatedOn = userDto.UpdatedOn,
+                UpdatedBy = userDto.UpdatedBy
+
             };
         }
 
@@ -224,8 +251,12 @@ namespace SMA.ApplicationServices.Helpers
                 ImageId = user.ImageId,
                 Location = user.Location,
                 Website = user.Website,
-                Bio = user.Bio
-                
+                Bio = user.Bio,
+
+                CreatedOn = user.CreatedOn,
+                UpdatedOn = user.UpdatedOn,
+                UpdatedBy = user.UpdatedBy
+
             };
         }
 

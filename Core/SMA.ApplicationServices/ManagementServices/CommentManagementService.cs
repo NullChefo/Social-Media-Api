@@ -30,6 +30,14 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Comments.Where(x => x.PostId == id).Count();
         }
 
+
+        public CommentDto Edit(int id)
+        {
+            return _context.Comments.AsNoTracking().SingleOrDefault(x => x.Id == id).ToCommentDto();
+
+        }
+
+
         public int Save(CommentDto commentDto)
         {
             try

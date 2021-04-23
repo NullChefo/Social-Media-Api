@@ -11,6 +11,11 @@ namespace SMA.ApplicationServices.DTOs
         public int CreatedByUserId { get; set; }
         public string CommentBody { get; set; } = "";
         public int? PostId { get; set; }
-      
+
+        public DateTime? CreatedOn { get; set; } = null;
+        public DateTime? UpdatedOn { get; set; } = null;
+        public int UpdatedBy { get; set; } = 0;
+
+
     }
 }

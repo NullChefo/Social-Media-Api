@@ -19,6 +19,8 @@ namespace SMA.MVC.Controllers
        
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("UserId") == null) { return View(null); }
+
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = url;
@@ -33,7 +35,6 @@ namespace SMA.MVC.Controllers
                 return View(userVMs);
             }
         }
-
         [HttpGet]
         public IActionResult Create()
         { return View(); }
@@ -54,12 +55,14 @@ namespace SMA.MVC.Controllers
                 var content = new ByteArrayContent(encodingVM);
                 content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
                 var response = httpClient.PostAsync("", content).Result;
+
+                return RedirectToAction("Index", "Comment");
             }
 
-            return RedirectToAction("Index");
         }
 
-        [HttpGet]
+
+            [HttpGet]
         public IActionResult Delete(int id)
         {
             using (HttpClient httpClient = new HttpClient())
@@ -90,9 +93,50 @@ namespace SMA.MVC.Controllers
 
                 var response = httpClient.DeleteAsync(url + "/" + id).Result;
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Comment");
             }
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = url;
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = httpClient.GetStringAsync(url + "/Edit/" + id).Result;
+                var vm = JsonConvert.DeserializeObject<CommentVM>(response);
+                return View(vm);
+            }
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(CommentVM vm)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = url;
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var stringVm = JsonConvert.SerializeObject(vm);
+                var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
+                var content = new ByteArrayContent(encodingVM);
+                content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
+                var response = httpClient.PostAsync(url + "/Edit/", content).Result;
+
+                return RedirectToAction("Index", "Comment");
+            }
+
+        }
+
+
+
     }
 }
 

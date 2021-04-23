@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SMA.MVC.ViewModels.LikeVM>
+@{
+    ViewBag.Title = "Index";
+}
+
+<center><h2>Index</h2></center>
+
+@if (Model == null)
+{
+    <center><span class="alert-info">No like object</span></center>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>PostId</th>
+                <th>CreatedByUserId</th>
+                <th>CreatedOn</th>
+                <th>UpdatedOn</th>
+                <th>UpdatedBy</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.LikeId</td>
+                <td>@item.PostId</td>
+                <td>@item.CreatedByUserId</td>
+                <td>@item.CreatedOn</td>
+                <td>@item.UpdatedBy</td>
+                <td>@item.UpdatedOn</td>
+
+
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.LikeId }) / @Html.ActionLink("Delete", "Delete", new { id = item.LikeId })</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

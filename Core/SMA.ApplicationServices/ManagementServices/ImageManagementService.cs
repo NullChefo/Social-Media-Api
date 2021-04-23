@@ -37,6 +37,12 @@ namespace SMA.ApplicationServices.ManagementServices
             return ImgPath;
         }
 
+        public ImageDto Edit(int id)
+        {
+            return _context.Images.AsNoTracking().SingleOrDefault(x => x.Id == id).ToImageDto();
+
+        }
+
 
         public int Save(ImageDto imageDto)
         {

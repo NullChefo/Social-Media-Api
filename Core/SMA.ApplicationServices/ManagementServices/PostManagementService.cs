@@ -25,6 +25,12 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Posts.Find(PostBody).ToPostDto();
         }
 
+        public PostDto Edit(int id)
+        {
+            return _context.Posts.AsNoTracking().SingleOrDefault(x => x.Id == id).ToPostDto();
+
+        }
+
 
         public int Save(PostDto postDto)
         {
@@ -58,7 +64,7 @@ namespace SMA.ApplicationServices.ManagementServices
             }
         }
 
-       
+
 
 
     }

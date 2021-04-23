@@ -26,18 +26,22 @@ namespace SMA.WebApiServices.Controllers
             return Ok(_service.GetAll());
         }
 
-    
+
+   
+
+
+
         [HttpGet, Route("/api/Post/GetByPostBody/{postbody}")]
         public ActionResult Get(string postbody)
         {
-
-            if (_service.GetByPostBody(postbody) == null)
+            var i = _service.GetByPostBody(postbody);
+            if (i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetByPostBody(postbody));
+                return Ok(i);
             }
         }
 
@@ -45,14 +49,14 @@ namespace SMA.WebApiServices.Controllers
         [HttpGet, Route("/api/Post/{id}")]
         public ActionResult GetById(int id)
         {
-
-            if (_service.GetById(id) == null)
+            var i = _service.GetById(id) ;
+            if (i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetById(id));
+                return Ok(i);
             }
         }
 
@@ -70,7 +74,24 @@ namespace SMA.WebApiServices.Controllers
             return Ok(_service.Delete(id));
 
         }
-      
+
+
+
+        //[Authorize]
+        [HttpPost, Route("/api/Post/Edit/")]
+        public ActionResult Edit(PostDto dto)
+        {
+            return Ok(_service.Save(dto));
+        }
+
+        //[Authorize]
+        [HttpGet, Route("/api/Post/Edit/{id}")]
+        public ActionResult Edit(int id)
+        {
+            return Ok(_service.Edit(id));
+        }
+
+
 
     }
 

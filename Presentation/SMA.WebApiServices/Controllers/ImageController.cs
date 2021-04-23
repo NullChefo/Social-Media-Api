@@ -14,6 +14,8 @@ namespace SMA.WebApiServices.Controllers
     [Produces("application/json")]
     [Route("api/Image")]
     [ApiController]
+
+  //[Authorize]
     public class ImageController : Controller
     {
         private readonly ImageManagementService _service = new ImageManagementService();
@@ -25,7 +27,7 @@ namespace SMA.WebApiServices.Controllers
             _environment = environment ?? throw new ArgumentNullException(nameof(environment));
         }
 
-        //      [Authorize]
+        
         [HttpGet]
         public ActionResult GetAll()
         {
@@ -33,7 +35,7 @@ namespace SMA.WebApiServices.Controllers
         }
 
 
-        //      [Authorize]
+        
         [HttpGet, Route("/api/Image/GetByCreatedByUserId/{id}")]
         public ActionResult GetByPostId(int id)
         {
@@ -48,34 +50,35 @@ namespace SMA.WebApiServices.Controllers
             }
         }
 
-        //      [Authorize]
+        
         [HttpGet, Route("/api/Image/GetImagePathByImageId/{id}")]
         public ActionResult GetImagePathByImageId(int id)
         {
+            var i = _service.GetImagePathByImageId(id);
 
-            if (_service.GetImagePathByImageId(id) == null)
+            if ( i== null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetImagePathByImageId(id));
+                return Ok(i);
             }
         }
 
 
-        //      [Authorize]
+       
         [HttpGet, Route("/api/Image/GetById/{id}")]
         public ActionResult GetById(int id)
         {
-
-            if (_service.GetById(id) == null)
+            var i = _service.GetById(id);
+            if (i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetById(id));
+                return Ok(i);
             }
         }
 
@@ -83,16 +86,12 @@ namespace SMA.WebApiServices.Controllers
         #region Upload image
 
         [HttpPost, Route("/api/Image")]
-        public async Task<IActionResult> UploadImage(List<IFormFile> files, int UserId)
+        public async Task<IActionResult> UploadImage(IFormFile file, int UserId)
         {
             ImageDto image = new ImageDto();
 
             try
             {
-
-                foreach (var file in files)
-                {
-
                     string uniqueFileName = null;
 
                     string uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
@@ -110,9 +109,7 @@ namespace SMA.WebApiServices.Controllers
 
                     _service.Save(image);
 
-                }
                 return Ok();
-
 
 
             }
@@ -125,7 +122,6 @@ namespace SMA.WebApiServices.Controllers
         #endregion
 
 
-        //      [Authorize]
         [HttpDelete, Route("/api/Image/{id}")]
         public ActionResult Delete(int id)
         {
@@ -134,9 +130,20 @@ namespace SMA.WebApiServices.Controllers
             
         }
 
+        [HttpPost, Route("/api/Image/Edit/")]
+        public ActionResult Edit(ImageDto dto)
+        {
+            return Ok(_service.Save(dto));
+        }
+
+     
+        [HttpGet, Route("/api/Image/Edit/{id}")]
+        public ActionResult Edit(int id)
+        {
+            return Ok(_service.Edit(id));
+        }
 
 
-       
 
     }
 }

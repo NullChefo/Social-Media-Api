@@ -67,6 +67,15 @@ namespace SMA.ApplicationServices.ManagementServices
             }
         }
 
+
+        public UserDto Edit(int id)
+        {
+            return _context.Users.AsNoTracking().SingleOrDefault(x => x.Id == id).ToUserDto();
+
+        }
+
+
+
         public int Delete(int id)
         {
             try

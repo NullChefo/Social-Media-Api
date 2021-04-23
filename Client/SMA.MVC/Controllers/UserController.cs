@@ -19,6 +19,7 @@ namespace SMA.MVC.Controllers
         // GET: Users
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("UserId") == null) { return View(null); }
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = url;
@@ -79,7 +80,7 @@ namespace SMA.MVC.Controllers
                 {
                     var response = await httpClient.GetStringAsync(url + "/" + "GetUserIdByEmail" + "/" + email);
                     UserId = response;
-                   
+
                 }
                 catch (Exception e)
                 {
@@ -93,9 +94,7 @@ namespace SMA.MVC.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            
         }
-  
 
 
         [HttpGet]
@@ -119,33 +118,13 @@ namespace SMA.MVC.Controllers
                 var content = new ByteArrayContent(encodingVM);
                 content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
                 var response = httpClient.PostAsync("", content).Result;
+
             }
 
-
-            // Create Image 
-            ImageVM imagevm = new ImageVM();
-
-              Uri urlImage = new Uri("https://localhost:44321/api/Image");
-
-            using (HttpClient httpClient = new HttpClient())
-            {
-                httpClient.BaseAddress = urlImage;
-                httpClient.DefaultRequestHeaders.Accept.Clear();
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var stringVm = JsonConvert.SerializeObject(imagevm);
-                var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
-                var content = new ByteArrayContent(encodingVM);
-                content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
-                var response = httpClient.PostAsync("", content).Result;
-            }
-
-
-           
 
 
             return RedirectToAction("Login", "User");
         }
-
 
 
 
@@ -159,7 +138,6 @@ namespace SMA.MVC.Controllers
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
 
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
                 var response = httpClient.GetStringAsync(url + "/" + id).Result;
                 var vm = JsonConvert.DeserializeObject<UserVM>(response);
 
@@ -180,15 +158,53 @@ namespace SMA.MVC.Controllers
 
                 var response = httpClient.DeleteAsync(url + "/" + id).Result;
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "User");
             }
         }
 
 
-        
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = url;
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = httpClient.GetStringAsync(url + "/Edit/" + id).Result;
+                var vm = JsonConvert.DeserializeObject<UserVM>(response);
+                return View(vm);
+            }
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(UserVM vm)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = url;
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var stringVm = JsonConvert.SerializeObject(vm);
+                var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
+                var content = new ByteArrayContent(encodingVM);
+                content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
+                var response = httpClient.PostAsync(url + "/Edit/", content).Result;
+
+                return RedirectToAction("Index", "User");
+            }
+
+
+
+        }
+
 
     }
-
-
 }
 

@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Image 
+    public class Image : BaseEntitie
     {
-        [Key]
-        public int Id { get; set; }
-        public DateTime? CreatedOn { get; set; }
-        public DateTime? UpdatedOn { get; set; }
+        
+       
 
         public string ImageUrl { get; set; }
 

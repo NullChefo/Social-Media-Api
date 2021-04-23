@@ -5,7 +5,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<center><h2>Create</h2></center>
 
 @using (Html.BeginForm())
 {
@@ -78,20 +78,16 @@
         </div>
     </div>
 
-   
-    
-    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <div>
-            Select Image
-            <input type="file" name="file" />
-  
+    <div class="form-group">
+        @Html.LabelFor(model => model.ImageId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ImageId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ImageId, "", new { @class = "text-danger" })
         </div>
-        
-    }
+    </div>
 
-
-
+  
+    @(Html.HiddenFor(model => model.CreatedOn, new { value = DateTime.UtcNow }))
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -102,5 +98,5 @@
         }
 
 <div>
-    @Html.ActionLink("Alredy user", "Login")
+    @Html.ActionLink("Alredy user", "/User/Login")
 </div>

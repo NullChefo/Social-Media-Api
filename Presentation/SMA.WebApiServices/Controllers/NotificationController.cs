@@ -25,18 +25,21 @@ namespace SMA.WebApiServices.Controllers
             return Ok(_service.GetAll());
         }
 
+
+
+
         
         [HttpGet, Route("/api/Notification/GetByRecipientUserId/{id}")]
         public ActionResult GetByRecipientUserId(int id)
         {
-
-            if (_service.GetByRecipientUserId(id) == null)
+            var i = _service.GetByRecipientUserId(id);
+            if ( i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetByRecipientUserId(id));
+                return Ok(i);
             }
         }
 
@@ -45,13 +48,15 @@ namespace SMA.WebApiServices.Controllers
         public ActionResult GetBySenderUserId(int id)
         {
 
-            if (_service.GetBySenderUserId(id) == null)
+            var i = _service.GetBySenderUserId(id);
+
+            if ( i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetBySenderUserId(id));
+                return Ok(i);
             }
         }
 
@@ -59,14 +64,14 @@ namespace SMA.WebApiServices.Controllers
         [HttpGet, Route("/api/Notification/{id}")]
         public ActionResult Get(int id)
         {
-
-            if (_service.GetById(id) == null)
+            var i = _service.GetById(id);
+            if (i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetById(id));
+                return Ok(i);
             }
         }
      
@@ -87,7 +92,20 @@ namespace SMA.WebApiServices.Controllers
 
 
 
-        
+        //[Authorize]
+        [HttpPost, Route("/api/Notification/Edit/")]
+        public ActionResult Edit(NotificationDto dto)
+        {
+            return Ok(_service.Save(dto));
+        }
+
+        //[Authorize]
+        [HttpGet, Route("/api/Notification/Edit/{id}")]
+        public ActionResult Edit(int id)
+        {
+            return Ok(_service.Edit(id));
+        }
+
 
     }
 

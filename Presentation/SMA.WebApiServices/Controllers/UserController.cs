@@ -14,55 +14,56 @@ using System.IdentityModel.Tokens.Jwt;
 namespace SMA.WebApiServices.Controllers
 {
 
-    
+
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private readonly UserManagementService _service = new UserManagementService();
 
-//      [Authorize]
+        //      [Authorize]
         [HttpGet]
         public ActionResult GetAll()
         {
             return Ok(_service.GetAll());
         }
 
- //     [Authorize]
+        //     [Authorize]
         [HttpGet, Route("/api/User/GetByEmail/{email}")]
         public ActionResult GetByEmail(string email)
         {
-
-            if (_service.GetByEmail(email) == null)
+            dynamic i = _service.GetByEmail(email);
+            if (i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetByEmail(email));
+                return Ok(i);
             }
         }
 
-//      [Authorize]
+        //      [Authorize]
         [HttpGet, Route("/api/User/GetUserIdByEmail/{email}")]
         public ActionResult GetUserIdByEmail(string email)
         {
-
-            if (_service.GetUserIdByEmail(email) == 0)
+            dynamic i = _service.GetUserIdByEmail(email);
+            if (i == 0)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetUserIdByEmail(email));
+                return Ok(i);
             }
         }
 
-//     [Authorize]
+        //     [Authorize]
         [HttpGet, Route("/api/User/PassLoginInfo/{email}&{password}")]
         public ActionResult PassLoginInfo(string email, string password)
         {
-            if (_service.PassLoginInfo(email, password) == null)
+            dynamic i = _service.PassLoginInfo(email, password);
+            if (i == null)
             {
                 return NotFound();
             }
@@ -74,18 +75,18 @@ namespace SMA.WebApiServices.Controllers
 
         }
 
-//      [Authorize]
+        //      [Authorize]
         [HttpGet, Route("/api/User/GetByUserIdTheFullNameOfUser/{id}")]
         public ActionResult GetByIdTheFullNameOfUser(int id)
         {
-
-            if (_service.GetByUserIdTheFullNameOfUser(id) == null)
+            dynamic i = _service.GetByUserIdTheFullNameOfUser(id);
+            if (i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetByUserIdTheFullNameOfUser(id));
+                return Ok(i);
             }
         }
 
@@ -95,14 +96,14 @@ namespace SMA.WebApiServices.Controllers
         [HttpGet, Route("/api/User/{id}")]
         public ActionResult GetById(int id)
         {
-
-            if (_service.GetById(id) == null)
+            var i = _service.GetById(id);
+            if (i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetById(id));
+                return Ok(i);
             }
         }
 
@@ -114,16 +115,33 @@ namespace SMA.WebApiServices.Controllers
 
         }
 
- //       [Authorize]
+
+        //       [Authorize]
+        [HttpPost, Route("/api/User/Edit/")]
+        public ActionResult Edit(UserDto userDto)
+        {
+            return Ok(_service.Save(userDto));
+        }
+
+        //       [Authorize]
+        [HttpGet, Route("/api/User/Edit/{id}")]
+        public ActionResult Edit(int id)
+        {
+            return Ok(_service.Edit(id));
+        }
+
+
+
+        //       [Authorize]
         [HttpDelete, Route("/api/User/{id}")]
         public ActionResult Delete(int id)
         {
 
             return Ok(_service.Delete(id));
 
-
-
         }
+
+
 
         private string GenerateJSONWebToken()
         {

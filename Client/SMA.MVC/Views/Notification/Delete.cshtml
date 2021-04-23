@@ -1,24 +1,25 @@
-﻿@model SMA.MVC.ViewModels.UserVM
+﻿@model SMA.MVC.ViewModels.NotificationVM
 
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<center><h2>Delete</h2></center>
 
-<h3>Are you sure you want to delete this user?</h3>
+<h3>Are you sure you want to delete this notification?</h3>
+
 <div>
-    <h4>UserVM</h4>
+    <h4>Notifications</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.NotificationId)
         </dt>
 
         <dd>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.SenderUserId)
         </dd>
-    
+
     </dl>
 
     @using (Html.BeginForm())
@@ -27,7 +28,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-danger" /> |
-            <a href="/User/Index">Back</a>
+            <a href="/Notification/Index">Back</a>
         </div>
     }
 </div>

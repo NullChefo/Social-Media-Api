@@ -3,11 +3,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<center><h2>Index</h2></center>
 
-@if (!Model.Any())
+@if (Model == null)
 {
-    <span class="alert-info">No user object</span>
+    <center><span class="alert-info">No user object</span></center>
 }
 else
 {
@@ -21,6 +21,10 @@ else
                 <th>Location</th>
                 <th>Bio</th>
                 <th>Website</th>
+                <th>CreatedOn</th>
+                <th>UpdatedBy</th>
+                <th>UpdatedOn</th>
+
                 <th></th>
 
             </tr>
@@ -34,11 +38,20 @@ else
                 <td>@item.FirstName</td>
                 <td>@item.MidleName</td>
                 <td>@item.LastName</td>
-              
+
                 <td>@item.Location</td>
                 <td>@item.Bio</td>
                 <td>@item.Website</td>
-                <td>@Html.ActionLink("Delete", "Delete", new { id = item.UserId })</td>
+
+                <td>@item.CreatedOn</td>
+                <td>@item.UpdatedBy</td>
+                <td>@item.UpdatedOn</td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) /
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+                </td>
+
             </tr>
             }
         </tbody>

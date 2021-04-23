@@ -12,11 +12,13 @@ namespace SMA.MVC.ViewModels
     {
         public int PostId { get; set; }
         public int CreatedByUserId { get; set; }
-        public int? ImageId { get; set; }
-        public string PostBody { get; set; }
-        public int CommentCount { get; set; }
-        public int LikeCount { get; set; }
 
+        public string PostBody { get; set; }
+        public int? ImageId { get; set; }
+
+        public DateTime? CreatedOn { get; set; }
+        public DateTime? UpdatedOn { get; set; } 
+        public int UpdatedBy { get; set; } 
 
 
 
@@ -36,6 +38,7 @@ namespace SMA.MVC.ViewModels
         }
 
 
+
         public async Task<string> GetByUserIdTheFullNameOfUser(int id)
         {
             using (HttpClient httpClient = new HttpClient())
@@ -43,9 +46,11 @@ namespace SMA.MVC.ViewModels
                 httpClient.BaseAddress = userUrl;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                
                 try
                 {
-                    var response = await httpClient.GetStringAsync(userUrl + "/" + "GetByUserIdTheFullNameOfUser" + "/" + id);
+                    var response = await httpClient.GetStringAsync(userUrl + "/" + "GetByUserIdTheFullNameOfUser" + "?" + id);
                     return response;
                 }
                 catch (Exception e)
@@ -65,7 +70,7 @@ namespace SMA.MVC.ViewModels
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    var response = await httpClient.GetStringAsync(likeUrl + "/" + "GetLikesCountByPostId" + "/" + id);
+                    var response = await httpClient.GetStringAsync(likeUrl + "/" + "GetLikesCountByPostId" + "?" + id);
 
 
                     return Int32.Parse(response);
@@ -88,7 +93,7 @@ namespace SMA.MVC.ViewModels
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    var response = await httpClient.GetStringAsync(commentUrl + "/" + "GetCommentsCountByPostId" + "/" + id);
+                    var response = await httpClient.GetStringAsync(commentUrl + "/" + "GetCommentsCountByPostId" + "?" + id);
 
 
                     return Int32.Parse(response);
@@ -113,7 +118,7 @@ namespace SMA.MVC.ViewModels
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    var response = await httpClient.GetStringAsync(imgUrl + "/" + "GetImagePathByImageId" + "/" + id);
+                    var response = await httpClient.GetStringAsync(imgUrl + "/" + "GetImagePathByImageId" + "?" + id);
 
 
                     return response;

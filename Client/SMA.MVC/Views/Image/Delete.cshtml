@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Http;
+@model SMA.MVC.ViewModels.ImageVM;
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<center><h2>Delete</h2></center>
+
+<h3>Are you sure you want to delete comment post?</h3>
+<div>
+    <h4>Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            
+            <p>ImageId:@Html.DisplayNameFor(model => model.ImageId)</p>
+            <p>ImageUrl:  @Html.DisplayNameFor(model => model.ImageUrl)</p>
+        </dt>
+
+        <dd>
+            <p>Created  by:@Html.DisplayNameFor(model => model.CreatedByUserId)</p>
+            <img src=" @Model.ImageUrl " />
+        </dd>
+        
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            Delete
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+
+            <a href="/Image/Index">Back</a>
+        </div>
+    }
+</div>

@@ -20,15 +20,26 @@ namespace SMA.ApplicationServices.ManagementServices
             return _context.Notifications.AsNoTracking().SingleOrDefault(x => x.Id == id).ToNotificationDto();
         }
 
-        public NotificationDto GetByRecipientUserId(int id)
+        
+        //
+        public IEnumerable<NotificationDto> GetByRecipientUserId(int id)
         {
-            return _context.Notifications.AsNoTracking().SingleOrDefault(x => x.RecipientUserId == id).ToNotificationDto();
+            return _context.Notifications.AsNoTracking().AsEnumerable().Where(x => x.RecipientUserId == id).ToNotificationDtos();
+        }
+        //
+
+        public NotificationDto Edit(int id)
+        {
+            return _context.Notifications.AsNoTracking().SingleOrDefault(x => x.Id == id).ToNotificationDto();
+
         }
 
-        public NotificationDto GetBySenderUserId(int id)
+        public IEnumerable<NotificationDto> GetBySenderUserId(int id)
         {
-            return _context.Notifications.AsNoTracking().SingleOrDefault(x => x.SenderUserId == id).ToNotificationDto();
+            return _context.Notifications.AsNoTracking().AsEnumerable().Where(x => x.SenderUserId == id).ToNotificationDtos();
         }
+
+
 
         public int Save(NotificationDto notificationDto)
         {

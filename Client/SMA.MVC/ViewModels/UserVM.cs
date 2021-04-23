@@ -43,7 +43,10 @@ namespace SMA.MVC.ViewModels
         public string Website { get; set; }
         [Display(Name = "Bio")]
         public string Bio { get; set; }
-       
+
+        public DateTime? CreatedOn { get; set; } 
+        public DateTime? UpdatedOn { get; set; } 
+        public int UpdatedBy { get; set; } 
 
     }
 }

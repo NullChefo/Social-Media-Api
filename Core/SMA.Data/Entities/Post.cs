@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Post 
-{
-        [Key]
-        public int Id { get; set; }
+    public class Post : BaseEntitie
+    {
+        
 
         [ForeignKey("UserId")]
         public int CreatedByUserId { get; set; }
@@ -20,8 +19,7 @@ namespace SMA.Data.Entities
 
         [StringLength(300)]
         public string PostBody { get; set; } = "";
-        public uint CommentCount { get; set; } = 0;
-        public uint LikeCount { get; set; } = 0;
+       
 
       
 

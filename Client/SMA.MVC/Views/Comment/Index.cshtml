@@ -3,11 +3,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<center><h2>Index</h2></center>
 
-@if (!Model.Any())
+@if (Model==null)
 {
-<span class="alert-info">No comments object</span>
+<center><span class="alert-info">No comments object</span></center>
 }
 else
 {
@@ -18,8 +18,9 @@ else
             <th>CommentBody</th>
             <th>CreatedByUserId</th>
             <th>PostId</th>
-          
-
+            <th>CreadenOn</th>
+            <th>UpdatedOn</th>
+            <th>UpdatedBy</th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +31,10 @@ else
             <td>@item.CommentBody</td>
             <td>@item.CreatedByUserId</td>
             <td>@item.PostId</td>
-            <td>@Html.ActionLink("Delete", "Delete", new { id = item.CommentId })</td>
+            <td>@item.CreatedOn</td>
+            <td>@item.UpdatedOn</td>
+            <td>@item.UpdatedBy</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = item.CommentId }) / @Html.ActionLink("Delete", "Delete", new { id = item.CommentId })</td>
         </tr>
             }
     </tbody>

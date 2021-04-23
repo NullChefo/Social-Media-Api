@@ -3,11 +3,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<center><h2>Index</h2></center>
 
-@if (!Model.Any())
+@if (Model==null)
 {
-    <span class="alert-info">No images object</span>
+<center> <span class="alert-info">No images object</span></center>
 }
 else
 {
@@ -15,9 +15,10 @@ else
         <thead>
             <tr>
                 <th>#</th>
-                <th>Created on</th>
+                <th>Image Preview</th>
                 <th>Created by user</th>
                 <th>Image url</th>
+                <th>Created on</th>
                 <th>Updated on</th>
                 <th></th>
 
@@ -28,14 +29,16 @@ else
             {
                 
 
-
             <tr>
                 <td>@item.ImageId</td>
-                <td>@item.CreatedOn</td>
+
+                <td><img src="@item.ImageUrl" width="60" height="60"  > </td>
+
                 <td>@item.CreatedByUserId</td>
                 <td>@item.ImageUrl</td>
+                <td>@item.CreatedOn</td>
                 <td>@item.UpdatedOn</td>
-                <td>@Html.ActionLink("Delete", "Delete", new { id = item.ImageId })</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.ImageId }) / @Html.ActionLink("Delete", "Delete", new { id = item.ImageId })</td>
             </tr>
             }
         </tbody>

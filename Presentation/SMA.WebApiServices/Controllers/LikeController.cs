@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SMA.WebApiServices.Controllers
 {
-    [Authorize]
+   // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LikeController : ControllerBase
@@ -30,14 +30,14 @@ namespace SMA.WebApiServices.Controllers
         [HttpGet, Route("/api/Like/{id}")]
         public ActionResult GetById(int id)
         {
-
-            if (_service.GetById(id) == null)
+            var i = _service.GetById(id);
+            if (i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetById(id));
+                return Ok(i);
             }
         }
 
@@ -45,52 +45,62 @@ namespace SMA.WebApiServices.Controllers
         [HttpGet, Route("/api/Like/GetByPostId/{id}")]
         public ActionResult GetByPostId(int id)
         {
-
-            if (_service.GetByPostId(id) == null)
+            var i = _service.GetByPostId(id);
+            if (i == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetByPostId(id));
+                return Ok(i);
             }
         }
        
         [HttpGet, Route("/api/Like/GetLikesCountByPostId/{id}")]
         public ActionResult GetLikesCountByPostId(int id)
         {
-
-            if (_service.GetLikesCountByPostId(id) == 0)
+            var i = _service.GetLikesCountByPostId(id);
+            if (i == 0)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(_service.GetLikesCountByPostId(id));
+                return Ok(i);
             }
         }
 
 
-        //      [Authorize]
+        
         [HttpPost, Route("/api/Like")]
         public ActionResult CreateUser(LikeDto likeDto)
         {
             return Ok(_service.Save(likeDto));
 
         }
-        //      [Authorize]
+        
         [HttpDelete, Route("/api/Like/{id}")]
         public ActionResult Delete(int id)
         {
             
                 return Ok(_service.Delete(id));
             
-
-
         }
 
+   
+        [HttpPost, Route("/api/Like/Edit/")]
+        public ActionResult Edit(LikeDto dto)
+        {
+            return Ok(_service.Save(dto));
+        }
 
       
+        [HttpGet, Route("/api/Like/Edit/{id}")]
+        public ActionResult Edit(int id)
+        {
+            return Ok(_service.Edit(id));
+        }
+
 
 
     }

@@ -1,14 +1,15 @@
-﻿@model IEnumerable<SMA.MVC.ViewModels.PostVM>
+﻿
+@model IEnumerable<SMA.MVC.ViewModels.PostVM>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<a href="/User/Create"><img src="~/img/add.png" width="40" height="40" /></a>
+<center><h2>Posts</h2></center>
+<!-- <a href="/Post/Create"><img src="~/img/add.png" width="40" height="40" /></a> -->
 
-@if (!Model.Any())
+@if (Model == null)
 {
-    <span class="alert-info">No posts object</span>
+    <center><span class="alert-info">No posts object</span></center>
 }
 else
 {
@@ -19,9 +20,11 @@ else
                 <th>Image id</th>
                 <th>Created by user</th>
                 <th>Post body</th>
-                <th>Likes </th>
-                <th>Comments </th>
+                <th>CreatedOn</th>
+                <th>UpdatedBy</th>
+                <th>UpdatedOn</th>
                 <th></th>
+
 
             </tr>
         </thead>
@@ -29,18 +32,19 @@ else
             @foreach (var item in Model)
             {
 
-                <tr>
+            <tr>
+                <td>@item.PostId </td>
+                <td>@item.ImageId</td>
+                <td>@item.CreatedByUserId</td>
+                <td>@item.PostBody</td>
+                <td>@item.CreatedOn</td>
+                <td>@item.UpdatedBy</td>
+                <td>@item.UpdatedOn</td>
 
-                    <td>@item.PostId </td>
-                    <td>@item.GetImagePathByImageId(item.ImageId)</td>
-                    <td>@item.GetByUserIdTheFullNameOfUser(item.CreatedByUserId)</td>
-                    <td>@item.PostBody</td>
-                    <td>@item.GetLikesCountByPostId(item.PostId); </td>
-                    <td>@item.GetLikesCountByPostId(item.PostId) </td>
-
-                    <td>@Html.ActionLink("Delete", "Delete", new { id = item.PostId })</td>
-                </tr>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.PostId }) / @Html.ActionLink("Delete", "Delete", new { id = item.PostId })</td>
+            </tr>
             }
+
         </tbody>
     </table>
 }

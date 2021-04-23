@@ -19,29 +19,87 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link text-dark" href="/Post/Index">Posts</a></li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Notification/Index">Notification</a>
+                            <div class="dropdown show">
+                                <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Posts
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="nav-link text-dark" href="/Post/Index">All posts</a>
+                                    <a class="nav-link text-dark" href="/Post/Create">Create post</a>
+                                </div>
+                            </div>
                         </li>
-                      
 
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="@(Context.Session.GetString("UserId") != null ?"/User/Account" :  "/User/Create")">
-                                @(this.Context.Session.GetString("UserId") != null ? "Account" :  "Sign Up")
+                            <div class="dropdown show">
+                                <a class="btn  btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Images
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="nav-link text-dark" href="/Image/Index">All images</a>
+                                    <a class="nav-link text-dark" href="/Image/Create">Create image</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <div class="dropdown show">
+                                <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Likes
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="nav-link text-dark" href="/Like/Index">All likes</a>
+                                    <a class="nav-link text-dark" href="/Like/Create">Create likes</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <div class="dropdown show">
+                                <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Comments
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="nav-link text-dark" href="/Comment/Index">All comment</a>
+                                    <a class="nav-link text-dark" href="/Comment/Create">Create comment</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <div class="dropdown show">
+                                <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Notifications
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="nav-link text-dark" href="/Notification/Index">All notification</a>
+                                    <a class="nav-link text-dark" href="/Notification/Create">Create notification</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+                   
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark btn-outline-light" href="@(Context.Session.GetString("UserId") != null ?"/User/Index" :  "/User/Create")">
+                                @(this.Context.Session.GetString("UserId") != null ? "Accounts" :  "Sign Up")
                             </a>
                         </li>
 
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="@(Context.Session.GetString("UserId") != null ? "" : "/User/Login")">
+                            <a class="nav-link text-dark btn-outline-light" href="@(Context.Session.GetString("UserId") != null ? "" : "/User/Login")">
                                 @(this.Context.Session.GetString("UserId") != null ? "" : "Login")
                             </a>
                         </li>
-
-
-
 
                     </ul>
                 </div>
@@ -50,7 +108,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-          
+
             @RenderBody()
         </main>
     </div>

@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SMA.ApplicationServices.DTOs
+namespace SMA.Data.Entities
 {
-    public class ImageDto
+    public class BaseEntitie
     {
-        public int ImageId { get; set; }
-        public int CreatedByUserId { get; set; }
-     
-        public string ImageUrl { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public DateTime? CreatedOn { get; set; } = null;
+   
         public DateTime? UpdatedOn { get; set; } = null;
         public int UpdatedBy { get; set; } = 0;
 

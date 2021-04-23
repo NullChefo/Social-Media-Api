@@ -20,8 +20,10 @@ namespace SMA.ApplicationServices.DTOs
         public string Location { get; set; }
         public string Website { get; set; }
         public string Bio { get; set; }
-      
 
+        public DateTime? CreatedOn { get; set; } = null;
+        public DateTime? UpdatedOn { get; set; } = null;
+        public int UpdatedBy { get; set; } = 0;
 
     }
 }

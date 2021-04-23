@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Notification 
+    public class Notification : BaseEntitie
     {
-        [Key]
-        public int Id { get; set; }
+       
 
         [ForeignKey("PostId")]
         public int PostId { get; set; }

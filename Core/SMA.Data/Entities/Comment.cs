@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Comment 
+    public class Comment : BaseEntitie
     {
 
-        [Key]
-        public int Id { get; set; }
-
+       
         [StringLength(255)]
         public string CommentBody { get; set; } = "";
 

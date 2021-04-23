@@ -30,6 +30,14 @@ namespace SMA.ApplicationServices.ManagementServices
         {
             return _context.Likes.AsNoTracking().SingleOrDefault(x => x.Id == id).ToLikeDto();
         }
+
+        public LikeDto Edit(int id)
+        {
+            return _context.Likes.AsNoTracking().SingleOrDefault(x => x.Id == id).ToLikeDto();
+
+        }
+
+
         public int Save(LikeDto likeDto)
         {
             try

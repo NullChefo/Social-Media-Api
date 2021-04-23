@@ -1,0 +1,43 @@
+﻿@model SMA.MVC.ViewModels.ImageVM
+@using Microsoft.AspNetCore.Http;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create";
+}
+
+<center><h2>Create</h2></center>
+
+@if (Context.Session.GetString("UserId") == null)
+{
+    <center><span class="alert-info"> <a href="/User/Login"> Login first </a> </span></center>
+}
+else
+{
+
+    <h2>Create</h2>
+    @using (Html.BeginForm("Create", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Image</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ImageUrl)
+            </div>
+            <div class="editor-field">
+                <input id="ImageUrl" title="Upload a image"
+                       type="file" name="file" />
+            </div>
+         
+            @(Html.HiddenFor(model => model.CreatedByUserId, new { @value = @Int32.Parse(Context.Session.GetString("UserId")) }))
+            @(Html.HiddenFor(model => model.CreatedOn, new { @value = DateTime.UtcNow }))
+
+            <p><input type="submit" value="Create" /></p>
+        </fieldset>
+    }
+    <div>
+        <a href="/Image/Index">Back</a>
+    </div>
+
+}
+
