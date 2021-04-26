@@ -85,14 +85,14 @@ namespace SMA.WebApiServices.Controllers
             
         }
 
-        //[Authorize]
+        
         [HttpPost, Route("/api/Comment/Edit/")]
         public ActionResult Edit(CommentDto dto)
         {
             return Ok(_service.Save(dto));
         }
 
-        //[Authorize]
+        
         [HttpGet, Route("/api/Image/Comment/{id}")]
         public ActionResult Edit(int id)
         {

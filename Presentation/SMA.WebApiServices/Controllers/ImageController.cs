@@ -110,8 +110,6 @@ namespace SMA.WebApiServices.Controllers
                     _service.Save(image);
 
                 return Ok();
-
-
             }
             catch
             {
