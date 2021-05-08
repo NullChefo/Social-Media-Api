@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class BaseEntitie
+    public class BaseEntity
     {
         [Key]
         public int Id { get; set; }

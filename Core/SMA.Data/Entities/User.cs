@@ -7,23 +7,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SMA.Data.Entities
 {
-    public class User : BaseEntitie
+    public class User : BaseEntity
 
     {
       
 
-        [Required(ErrorMessage = "Please enter email")]
+       
         [Display(Name = "Email")]
         [StringLength(60)]
         public string UserEmail { get; set; }
 
-        [Required(ErrorMessage = "Please enter password")]
+        
         [Display(Name = "password")]
         [StringLength(60)]
         public string UserPassword { get; set; }
 
 
-        [Required(ErrorMessage = "Please enter first name")]
+      
         [Display(Name = "First Name")]
         [StringLength(40)]
         public string FirstName { get; set; }

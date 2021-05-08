@@ -47,7 +47,7 @@ namespace SMA.WebApiServices.Controllers
         [HttpGet, Route("/api/User/GetUserIdByEmail/{email}")]
         public ActionResult GetUserIdByEmail(string email)
         {
-            dynamic i = _service.GetUserIdByEmail(email);
+            var i = _service.GetUserIdByEmail(email);
             if (i == 0)
             {
                 return NotFound();

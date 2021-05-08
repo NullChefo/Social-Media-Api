@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Comment : BaseEntitie
+    public class Comment : BaseEntity
     {
 
        

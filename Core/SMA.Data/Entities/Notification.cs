@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Notification : BaseEntitie
+    public class Notification : BaseEntity
     {
        
 

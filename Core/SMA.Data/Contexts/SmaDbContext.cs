@@ -24,6 +24,18 @@ namespace SMA.Data.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<Comment>().ToTable("Comment");
+            
+            modelBuilder.Entity<Post>().ToTable("Post");
+            
+            modelBuilder.Entity<Notification>().ToTable("Notification");
+            
+            modelBuilder.Entity<Like>().ToTable("Like");
+            
+            modelBuilder.Entity<Image>().ToTable("Image");
+
+            
+            
             
         }
     }

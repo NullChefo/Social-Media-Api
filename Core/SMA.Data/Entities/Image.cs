@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SMA.Data.Entities
 {
-    public class Image : BaseEntitie
+    public class Image : BaseEntity
     {
         
        

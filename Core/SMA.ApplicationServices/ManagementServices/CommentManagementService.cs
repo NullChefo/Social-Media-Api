@@ -5,11 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SMA.Data.Repositories;
 
 namespace SMA.ApplicationServices.ManagementServices
 {
     public class CommentManagementService : BaseManagementService
     {
+        private CommentRepository _repository;
+        
+        
+        
+        
+        
         public IEnumerable<CommentDto> GetAll()
         {
             return _context.Comments.AsNoTracking().AsEnumerable().ToCommentDtos();
