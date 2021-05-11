@@ -15,12 +15,20 @@ namespace SMA.Data.Contexts
 
         public SmaDbContext() : base() { }
 
+        
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-         
             optionsBuilder.UseSqlServer("Server=localhost;Database=SocialMediaApplication;User Id=applogin;Password=1234;"); 
+        
         }
+        */
+        
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseNpgsql("Host=localhost:5432;Database=socialmediaapp;Username=applogin;Password=1234");
+        
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("User");
