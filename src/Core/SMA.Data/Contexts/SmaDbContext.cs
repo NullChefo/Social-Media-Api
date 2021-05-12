@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using SMA.Data.Entities;
 
 namespace SMA.Data.Contexts
@@ -16,19 +18,18 @@ namespace SMA.Data.Contexts
         public SmaDbContext() : base() { }
 
         
-        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=SocialMediaApplication;User Id=applogin;Password=1234;"); 
-        
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .Build();
+            optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+            /* optionsBuilder.UseSqlServer(configuration.GetConnectionString("MsSql"));  */
         }
-        */
-        
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host=localhost:5432;Database=socialmediaapp;Username=applogin;Password=1234");
         
         
+      
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("User");
