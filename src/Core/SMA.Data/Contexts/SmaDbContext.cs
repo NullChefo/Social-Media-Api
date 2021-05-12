@@ -8,6 +8,7 @@ namespace SMA.Data.Contexts
    
     public class SmaDbContext : DbContext
     {
+        private string connectionString = "Host=localhost:5432;Database=socialmediaapp;Username=applogin;Password=1234";
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
@@ -20,16 +21,11 @@ namespace SMA.Data.Contexts
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("appsettings.json")
-                .Build();
-            optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
-            /* optionsBuilder.UseSqlServer(configuration.GetConnectionString("MsSql"));  */
+            
+            optionsBuilder.UseNpgsql(connectionString);
+           
         }
-        
-        
-      
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("User");
