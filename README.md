@@ -8,3 +8,30 @@ The end user clients is planned at a later stage
 # Database schema
 
 ![SocalMediaApp Database Schema Diagram](./docs/SocalMediaAppDatabaseSchemaDiagram.png)
+
+
+
+# Web Clients
+
+
+React
+ 
+---
+
+Angular
+
+---
+
+MVC
+
+---
+
+# Mobile Clients
+
+
+
+React Native
+
+---
+
+Flutter
