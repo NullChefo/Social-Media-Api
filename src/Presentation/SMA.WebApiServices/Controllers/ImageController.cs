@@ -128,7 +128,7 @@ namespace SMA.WebApiServices.Controllers
             
         }
 
-        [HttpPost, Route("/api/Image/Edit/")]
+        [HttpPut, Route("/api/Image/Edit/")]
         public ActionResult Edit(ImageDto dto)
         {
             return Ok(_service.Save(dto));

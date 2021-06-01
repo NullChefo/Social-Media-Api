@@ -86,7 +86,7 @@ namespace SMA.WebApiServices.Controllers
         }
 
         
-        [HttpPost, Route("/api/Comment/Edit/")]
+        [HttpPut, Route("/api/Comment/Edit/")]
         public ActionResult Edit(CommentDto dto)
         {
             return Ok(_service.Save(dto));

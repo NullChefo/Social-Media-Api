@@ -20,9 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMA.React", "Client\Web\SMA.React\SMA.React.csproj", "{0B863DCB-5F36-42FE-BA7C-98070D46B8CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{ABC8DEB7-B4DD-40AE-912B-D1B3FA424800}"
-	ProjectSection(SolutionItems) = preProject
-		Presentation\SMA.WebApiServices\SocialMediaApplication.sln = Presentation\SMA.WebApiServices\SocialMediaApplication.sln
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMA.WebApiServices", "Presentation\SMA.WebApiServices\SMA.WebApiServices.csproj", "{25722B99-E6E5-4E06-B3CC-747DCE30EFAB}"
 EndProject

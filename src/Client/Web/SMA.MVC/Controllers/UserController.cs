@@ -195,7 +195,7 @@ namespace SMA.MVC.Controllers
                 var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
                 var content = new ByteArrayContent(encodingVM);
                 content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
-                var response = httpClient.PostAsync(url + "/Edit/", content).Result;
+                var response = httpClient.PutAsync(url + "/Edit/", content).Result;
 
                 return RedirectToAction("Index", "User");
             }

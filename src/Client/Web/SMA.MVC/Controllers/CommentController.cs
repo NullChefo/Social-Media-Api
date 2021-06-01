@@ -13,7 +13,7 @@ namespace SMA.MVC.Controllers
 {
     public class CommentController : Controller
     {
-        private readonly Uri url = new Uri("https://localhost:44321/api/Comments");
+        private readonly Uri url = new Uri("https://localhost:44321/api/Comment");
 
         // GET: Comments
        
@@ -25,16 +25,19 @@ namespace SMA.MVC.Controllers
             {
                 httpClient.BaseAddress = url;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
+
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
 
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = httpClient.GetStringAsync("").Result;
-                var userVMs = JsonConvert.DeserializeObject<IEnumerable<CommentVM>>(response);
+                var vms = JsonConvert.DeserializeObject<IEnumerable<CommentVM>>(response);
 
-                return View(userVMs);
+                return View(vms);
             }
         }
+        
+        
         [HttpGet]
         public IActionResult Create()
         { return View(); }
@@ -56,7 +59,8 @@ namespace SMA.MVC.Controllers
                 content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
                 var response = httpClient.PostAsync("", content).Result;
 
-                return RedirectToAction("Index", "Comment");
+             
+              return RedirectToAction("Index", "Comment");
             }
 
         }
@@ -115,9 +119,9 @@ namespace SMA.MVC.Controllers
 
 
 
-        [HttpPost]
+        [HttpPut]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(CommentVM vm)
+        public  IActionResult Edit(CommentVM vm)
         {
             using (HttpClient httpClient = new HttpClient())
             {
@@ -128,9 +132,11 @@ namespace SMA.MVC.Controllers
                 var encodingVM = System.Text.Encoding.UTF8.GetBytes(stringVm);
                 var content = new ByteArrayContent(encodingVM);
                 content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
-                var response = httpClient.PostAsync(url + "/Edit/", content).Result;
-
-                return RedirectToAction("Index", "Comment");
+                var response = httpClient.PutAsync(url + "/Edit/", content).Result;
+                
+                RedirectToAction("Index","Comment");  
+                
+                return  RedirectToAction("Index","Comment"); 
             }
 
         }

@@ -78,7 +78,7 @@ namespace SMA.WebApiServices.Controllers
 
 
         
-        [HttpPost, Route("/api/Post/Edit/")]
+        [HttpPut, Route("/api/Post/Edit/")]
         public ActionResult Edit(PostDto dto)
         {
             return Ok(_service.Save(dto));

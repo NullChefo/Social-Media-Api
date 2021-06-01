@@ -88,7 +88,7 @@ namespace SMA.WebApiServices.Controllers
         }
 
    
-        [HttpPost, Route("/api/Like/Edit/")]
+        [HttpPut, Route("/api/Like/Edit/")]
         public ActionResult Edit(LikeDto dto)
         {
             return Ok(_service.Save(dto));

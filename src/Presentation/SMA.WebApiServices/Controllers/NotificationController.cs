@@ -93,7 +93,7 @@ namespace SMA.WebApiServices.Controllers
 
 
         
-        [HttpPost, Route("/api/Notification/Edit/")]
+        [HttpPut, Route("/api/Notification/Edit/")]
         public ActionResult Edit(NotificationDto dto)
         {
             return Ok(_service.Save(dto));
