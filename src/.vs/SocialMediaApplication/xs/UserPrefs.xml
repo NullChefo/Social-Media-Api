@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{184D204F-549E-4071-8B66-04ABE09CA742}|SMA.MVCWebSite">
+  <MonoDevelop.Ide.ItemProperties.Client.SMA.Angular FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SocialMediaApplication" expanded="True">
+            <Node name="Client" expanded="True">
+              <Node name="SMA.Angular" selected="True" />
+              <Node name="SMA.React" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Client.SMA.MVC PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Client.SMA.React FirstBuild="True" />
+</Properties>
