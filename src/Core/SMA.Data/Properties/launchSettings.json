@@ -21,8 +21,8 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": "true",
-      "applicationUrl": "http://localhost:51659",
-      "sslPort": 44316
+      "applicationUrl": "https://localhost:51659",
+      "sslPort": 51659
     }
   }
 }
