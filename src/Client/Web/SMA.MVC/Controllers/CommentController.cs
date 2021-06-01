@@ -30,7 +30,7 @@ namespace SMA.MVC.Controllers
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = httpClient.GetStringAsync("").Result;
-                var userVMs = JsonConvert.DeserializeObject<IEnumerable<UserVM>>(response);
+                var userVMs = JsonConvert.DeserializeObject<IEnumerable<CommentVM>>(response);
 
                 return View(userVMs);
             }

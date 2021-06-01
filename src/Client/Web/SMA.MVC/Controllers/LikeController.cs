@@ -114,7 +114,7 @@ namespace SMA.MVC.Controllers
 
 
 
-        [HttpPost]
+        [HttpPut]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(LikeVM vm)
         {

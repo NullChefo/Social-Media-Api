@@ -112,7 +112,7 @@ namespace SMA.MVC.Controllers
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = httpClient.GetStringAsync(url + "/" + id).Result;
-                var vm = JsonConvert.DeserializeObject<LikeVM>(response);
+                var vm = JsonConvert.DeserializeObject<ImageVM>(response);
 
                 return View(vm);
             }

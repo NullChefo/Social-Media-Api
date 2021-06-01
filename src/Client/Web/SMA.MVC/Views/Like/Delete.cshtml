@@ -33,7 +33,7 @@
 
             @(Model.CreatedByUserId == Int32.Parse( Context.Session.GetString("UserId")) ? "Delete" : " ")
             <input type="submit" value=@(Model.CreatedByUserId == Int32.Parse( Context.Session.GetString("UserId")) ? "Delete" : " ") class="btn btn-danger" /> |
-            @Html.ActionLink("Back to List", "/Comment/Index")
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>

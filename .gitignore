@@ -1,0 +1,14 @@
+
+.DS_Store
+src/Client/Mobile/SMA.Flutter/obj/*
+src/Client/Mobile/SMA.Flutter/obj
+src/Client/Mobile/SMA.ReactNative/ClientApp/node_modules
+src/Client/Mobile/SMA.ReactNative/obj
+src/Client/Web/SMA.Angular
+src/Client/Web/SMA.MVC/obj
+src/.idea/.idea.SocialMediaApplication/.idea
+src/Core/SMA.ApplicationServices/obj
+src/Core/SMA.Data/obj
+src/Presentation/SMA.WebApiServices/obj
+src/Client/Web/SMA.React/ClientApp/node_modules
+src/Client/Web/SMA.React/obj
