@@ -8,3 +8,32 @@ The end user clients is planned at a later stage
 # Database schema
 
 ![SocalMediaApp Database Schema Diagram](./docs/SocalMediaAppDatabaseSchemaDiagram.png)
+
+
+
+# Web Clients
+
+
+React
+ 
+---
+
+Angular
+
+---
+
+MVC
+
+- MVC will be ONLY used to display the RAW data! This is not supposed to be used by the end clients 
+
+---
+
+# Mobile Clients
+
+
+
+React Native
+
+---
+
+Flutter
