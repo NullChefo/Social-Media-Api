@@ -15,5 +15,6 @@ src/Client/Web/SMA.React/obj
 src/Client/Web/SMA.MVC/bin/
 src/Core/SMA.ApplicationServices/bin
 src/Core/SMA.Data/bin
+src/Core/.DS_Store
 src/Presentation/SMA.WebApiServices/bin
 
