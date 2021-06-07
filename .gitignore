@@ -1,28 +1,19 @@
-api/node_modules
-
 .DS_Store
 .idea
-api/.idea
+.idea
 .vs
+Core/SMA.ApplicationServices/obj
+node_modules
+Core/SMA.Data/obj
 
+Presentation/SMA.WebApiServices/obj
 
-api/Core/SMA.ApplicationServices/obj
-
-api/Core/SMA.Data/obj
-
-api/Presentation/SMA.WebApiServices/obj
-
-clients/web/React/node_modules
-clients/web/Angular/node_modules
-clients/web/Vue/node_modules
-clients/mobile/react_native/node_modules
-
-api/Client/SMA.MVC/bin
+Client/SMA.MVC/bin
 api/Client/SMA.MVC/obj
 
-api/Core/SMA.ApplicationServices/bin
-api/Core/SMA.Data/bin
-api/Presentation/SMA.WebApiServices/bin
+Core/SMA.ApplicationServices/bin
+Core/SMA.Data/bin
+Presentation/SMA.WebApiServices/bin
 
-api/package-lock.json
-api/package.json
+package-lock.json
+package.json
