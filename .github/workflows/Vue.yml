@@ -23,5 +23,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: cd ./clients/web/Vue &&   npm install
-    - run:  cd ./clients/web/Vue && npm run build --if-present
-    - run: cd ./clients/web/Vue && npm test
+    - run:  cd ./clients/web/Vue && npm run build
