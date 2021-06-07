@@ -24,7 +24,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: cd ./clients/web/React &&   npm install
-    - run: cd ./clients/web/React && npm start
-    
     - run:  cd ./clients/web/React && npm run build --if-present
     - run: cd ./clients/web/React && npm test
