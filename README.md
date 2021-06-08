@@ -14,15 +14,18 @@ The end user clients is planned at a later stage
 # Web Clients
 
 
-React
+### React
  
+- Will be linked later
 ---
 
-Angular
+### Angular
+
+- Will be linked later
 
 ---
 
-MVC
+### MVC
 
 - MVC will be ONLY used to display the RAW data! This is not supposed to be used by the end clients 
 
@@ -32,8 +35,12 @@ MVC
 
 
 
-React Native
+### React Native
+
+- Will be linked later
 
 ---
 
-Flutter
+### Flutter
+
+- Will be linked later
