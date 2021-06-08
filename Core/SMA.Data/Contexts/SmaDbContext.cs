@@ -8,6 +8,8 @@ namespace SMA.Data.Contexts
    
     public class SmaDbContext : DbContext
     {
+        // #TODO EDIT CONNECTION_STRING!!!
+        
         private string connectionString = "Host=localhost:5432;Database=socialmediaapp;Username=applogin;Password=1234";
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }

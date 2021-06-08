@@ -1,6 +1,6 @@
 # Social Media Application
 Social Media Application(SMA) with .NET 6 preview as back end and variety of front end consummators.
-Uses JWT token for authentication.
+Uses JWT token for authentication. The project supports swagger and it shows the api endpoints.
 
 Warning: The MVC project is not oriented towards the end user it was made to show the data in its row format. 
 The end user clients is planned at a later stage
@@ -45,3 +45,14 @@ The end user clients is planned at a later stage
 ### Flutter
 
 -  Working in progress. Will be linked the repositories later
+
+
+# Swagger 
+
+Api endpoints/documentation
+
+![Swagger1.png](./docs/Swagger1.png)
+
+![Swagger2.png](./docs/Swagger2.png)
+
+![Swagger3.png](./docs/Swagger3.png)

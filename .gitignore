@@ -9,7 +9,7 @@ Core/SMA.Data/obj
 Presentation/SMA.WebApiServices/obj
 
 Client/SMA.MVC/bin
-api/Client/SMA.MVC/obj
+Client/SMA.MVC/obj
 
 Core/SMA.ApplicationServices/bin
 Core/SMA.Data/bin
