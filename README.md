@@ -1,5 +1,6 @@
 # Social Media Application
-Social Media Application(SMA) with .NET 6 preview as back end and variety of front end consummators
+Social Media Application(SMA) with .NET 6 preview as back end and variety of front end consummators.
+Uses JWT token for authentication.
 
 Warning: The MVC project is not oriented towards the end user it was made to show the data in its row format. 
 The end user clients is planned at a later stage
@@ -16,12 +17,12 @@ The end user clients is planned at a later stage
 
 ### React
  
-- Will be linked later
+- Working in progress. Will be linked the repositories later
 ---
 
 ### Angular
 
-- Will be linked later
+-  Working in progress. Will be linked the repositories later
 
 ---
 
@@ -37,10 +38,10 @@ The end user clients is planned at a later stage
 
 ### React Native
 
-- Will be linked later
+-  Working in progress. Will be linked the repositories later
 
 ---
 
 ### Flutter
 
-- Will be linked later
+-  Working in progress. Will be linked the repositories later
