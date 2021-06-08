@@ -5,6 +5,8 @@ Uses JWT token for authentication. The project supports swagger and it shows the
 If you want to run the project first you should change the connection string in Core/SMA.Data/Contexts/SmaDbContext.cs and then you can make/update migrations
 using "dotnet ef" tool
 
+The project uses Postgresql for data storing!
+
 Warning: The MVC project is not oriented towards the end user it was made to show the data in its row format. 
 The end user clients is planned at a later stage
 
