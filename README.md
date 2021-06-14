@@ -13,7 +13,7 @@ The end user clients is planned at a later stage
 
 # Database schema
 
-![SocalMediaApp Database Schema Diagram](./docs/SocalMediaAppDatabaseSchemaDiagram.png)
+![0](./img/0.png)
 
 
 
@@ -56,8 +56,10 @@ The end user clients is planned at a later stage
 
 Api endpoints/documentation
 
-![Swagger1.png](./docs/Swagger1.png)
 
-![Swagger2.png](./docs/Swagger2.png)
 
-![Swagger3.png](./docs/Swagger3.png)
+![1](./img/1.png)
+
+![2](./img/2.png)
+
+![3](./img/3.png)
