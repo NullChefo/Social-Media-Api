@@ -1,4 +1,4 @@
-# Social Media Application
+# Social Media Application API
 Social Media Application(SMA) with .NET 6 preview as back end and variety of front end consummators.
 Uses JWT token for authentication. The project supports swagger and it shows the api endpoints.
 
